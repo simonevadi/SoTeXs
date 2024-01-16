@@ -3,6 +3,11 @@ import pandas as pd
 
 class AndreyML:
     def __init__(self, excel_file_name=None):
+        """Initialize AndreyML class instance.
+
+        Args:
+            excel_file_name (str, optional): Name of the Excel file to read data from. Defaults to None.
+        """
         
         self.excel_file_name = excel_file_name
         
@@ -16,7 +21,20 @@ class AndreyML:
                     'MLLG_mfm_first':6,
                     'MLLG_mrm_first':7}
 
-    def get_cff_for_ML(self,ind='MLBG_mfm_first', order=2, energy=np.arange(500, 5001,500),verbose=False):
+    def get_cff_for_ML(self, ind: str = 'MLBG_mfm_first', order: int = 2,
+                       energy: np.ndarray = np.arange(500, 5001, 500),
+                       verbose: bool = False) -> np.ndarray:
+        """Get cff for the multilayer depending on the energy.
+
+        Args:
+            ind (str, optional): Identifier of the correction factor. Defaults to 'MLBG_mfm_first'.
+            order (int, optional): Diffraction order. Defaults to 2.
+            energy (np.ndarray, optional): Array of energy values to interpolate the cff for. Defaults to np.arange(500, 5001, 500).
+            verbose (bool, optional): Whether to print the energy, alpha, beta, and cff values. Defaults to False.
+
+        Returns:
+            np.ndarray: Array of cff values interpolated for the input energy values.
+        """        
         ind          = self.ind_dict[ind]
         ml_pandas    = pd.read_excel(self.excel_file_name, header=(0,1,2,3))
         ml           = np.array(ml_pandas)
@@ -85,6 +103,9 @@ def ML_eff(ray_calc_eff, scale=None, ind=None, energy=None, grating_eff_file=Non
     de           = ml[:,6+10*ind]
     m2_eff       = np.interp(energy, energy_ml, m2)
     grat_eff     = np.interp(energy, energy_ml, grat)
+    print('###############')
+    for ind,en in enumerate(energy):
+        print(f'{en}, {m2_eff[ind]},  {grat_eff[ind]}')
     ray_calc_eff = ray_calc_eff*m2_eff*grat_eff
     return ray_calc_eff
 

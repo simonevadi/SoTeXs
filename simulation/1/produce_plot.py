@@ -67,6 +67,7 @@ undulator = np.loadtxt(undulator_file, skiprows=8)
 
 fig, (axs) = plt.subplots(4, 2,figsize=(10,10))
 
+log = False
 ens_flux = energy_flux.shape[0]
 ens_rp   = energy_rp.shape[0]
 
@@ -99,7 +100,7 @@ IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
 ax2=axs[0,1]
 ax2.set_xlabel('Energy [eV]')
 ax2.set_ylabel('Reflectivity [a.u.]')
-ax2.set_title('Mirror Coating Reflectivity')
+ax2.set_title(f'Mirror Coating Reflectivity, {theta}°')
 ax2.plot(E, IrCrB4C, 'b', label='IrCrB4C')
 ax2.legend()
 
@@ -108,7 +109,8 @@ ax2.legend()
 ax = axs[1,0]
 ax.plot(undulator[:,0], undulator[:,3])
 ax.grid(which='both', axis='both')
-ax.set_yscale('log')
+if log:
+    ax.set_yscale('log')
 ax.set_ylabel('Flux [ph/s/0.1%bw]')
 ax.set_xlabel('Harmonic energy [eV]')
 ax.set_title('CPMU20 Flux')
@@ -137,7 +139,8 @@ for ind, val in enumerate(SlitSize):
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Input Flux [ph/s/tbw]')
-ax.set_yscale('log')
+if log:
+    ax.set_yscale('log')
 ax.set_title('Available Flux (in transmitted bandwidth)')
 ax.grid(which='both', axis='both')
 # ax.legend()
@@ -158,7 +161,8 @@ for ind, val in enumerate(SlitSize):
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Flux [ph/s/tbw]')
-ax.set_yscale('log')
+if log:
+    ax.set_yscale('log')
 ax.set_title('Flux (2400l/mm, Blazed Grat., 2nd order)')
 ax.grid(which='both', axis='both')
 # ax.legend()
@@ -237,4 +241,4 @@ plt.suptitle('SoTeXs - Focus Size', fontsize=16, fontweight='bold')
 plt.tight_layout()
 plt.savefig('plot/battery_beamline_IrCrB4C_2order_focusSize.png')
 
-plt.show()
+# plt.show()
