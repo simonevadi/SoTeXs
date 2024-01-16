@@ -3,6 +3,10 @@ import numpy as np
 import os
 from andrey_lib import AndreyML
 
+from params import order, energy_rp as energy, SlitSize
+from params import nrays_rp as nrays, index, repeat_rp as repeat
+from params import ncpu_rp as ncpu
+
 this_file_dir=os.path.dirname(os.path.realpath(__file__))
 rml_file_name = 'battery_FLUX_forML_IrCrB4C'
 rml_file = os.path.join('rml/'+rml_file_name+'.rml')
@@ -12,18 +16,10 @@ sim = Simulate(rml_file, hide=True)
 rml=sim.rml
 beamline = sim.rml.beamline
 
-# cpu
-ncpu=20
-
-# define the values of the parameters to scan 
-order     = 2
-energy    = np.arange(500, 5001,500)
-SlitSize  = np.array([0.05,0.04,0.03,0.02,0.01])
-nrays     = 1000000 
 
 # Andrey ML
 aml = AndreyML(excel_file_name=os.path.join('ML_eff','grating_eff_5000.xlsx'))
-cff = aml.get_cff_for_ML(ind='MLBG_mfm_first', order=2, energy=np.arange(500, 5001,500))
+cff = aml.get_cff_for_ML(ind=index, order=order, energy=energy)
 # define a list of dictionaries with the parameters to scan
 params = [  
             # set two parameters: "alpha" and "beta" in a dependent way. 
@@ -45,7 +41,7 @@ sim.simulation_name = 'RP_'+rml_file_name
 # turn off reflectivity
 sim.reflectivity(reflectivity=False)
 # repeat the simulations as many time as needed
-sim.repeat = 10
+sim.repeat = repeat
 
 sim.analyze = True # let RAY-UI analyze the results
 ## This must be a list of dictionaries
