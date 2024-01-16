@@ -54,4 +54,4 @@ sim.exports  =  [{beamline.CPMU20:['ScalarElementProperties']},
 #sim.rml_list()
 
 #uncomment to run the simulations
-sim.run(multiprocessing=ncpu, force=True)
+sim.run(multiprocessing=ncpu, force=False)

@@ -40,25 +40,18 @@ nsim         = energy_flux.shape[0]*SlitSize.shape[0]
 flux_percent_unordered = ppa.retrieve_flux_beamline(folder_name, source, oe, nsim, rounds=repeat_flux, current=0.3)
 flux_percent           = undulator_order(flux_percent_unordered)
 
-ens = energy_flux.shape[0]
-flux_percent_50 = flux_percent[0*ens:1*ens]
-flux_percent_40 = flux_percent[1*ens:2*ens]
-flux_percent_30 = flux_percent[2*ens:3*ens]
-flux_percent_20 = flux_percent[3*ens:4*ens]
-flux_percent_10 = flux_percent[4*ens:5*ens]
 
-flux_abs_50 = scale_undulator_flux(energy_flux,flux_percent_50, undulator_file)
-flux_abs_40 = scale_undulator_flux(energy_flux,flux_percent_40, undulator_file)
-flux_abs_30 = scale_undulator_flux(energy_flux,flux_percent_30, undulator_file)
-flux_abs_20 = scale_undulator_flux(energy_flux,flux_percent_20, undulator_file)
-flux_abs_10 = scale_undulator_flux(energy_flux,flux_percent_10, undulator_file)
+
 
 ### ML RP
 folder_name = 'RAYPy_Simulation_RP_battery_FLUX_forML_IrCrB4C'
 oe          = 'DetectorAtFocus'
 nsim        = energy_rp.shape[0]*SlitSize.shape[0]
 
-bw_ML_2400_2_un, focx_ML_2400_2_un, focy_ML_2400_2_un = ppa.retrieve_bw_and_focusSize(folder_name, oe, nsim, rounds=repeat_rp)
+bw_ML_2400_2_un, focx_ML_2400_2_un, focy_ML_2400_2_un = ppa.retrieve_bw_and_focusSize(folder_name, 
+                                                                                      oe, 
+                                                                                      nsim, 
+                                                                                      rounds=repeat_rp)
 bw_ML_2400_2    = undulator_order(bw_ML_2400_2_un)
 focx_ML_2400_2  = undulator_order(focx_ML_2400_2_un)
 focy_ML_2400_2  = undulator_order(focy_ML_2400_2_un)
@@ -67,33 +60,15 @@ focy_ML_2400_2  = undulator_order(focy_ML_2400_2_un)
 undulator = np.loadtxt(undulator_file, skiprows=8)
 
 
-# scaling
-flux_abs_50_MLBG_mfm_second = ML_eff(flux_abs_50, 
-                                    ind=index, 
-                                    energy=energy_flux,
-                                    grating_eff_file=grating_eff_file)
-flux_abs_40_MLBG_mfm_second = ML_eff(flux_abs_40, 
-                                    ind=index, 
-                                    energy=energy_flux,
-                                    grating_eff_file=grating_eff_file)
-flux_abs_30_MLBG_mfm_second = ML_eff(flux_abs_30, 
-                                    ind=index, 
-                                    energy=energy_flux,
-                                    grating_eff_file=grating_eff_file)
-flux_abs_20_MLBG_mfm_second = ML_eff(flux_abs_20, 
-                                    ind=index, 
-                                    energy=energy_flux,
-                                    grating_eff_file=grating_eff_file)
-flux_abs_10_MLBG_mfm_second = ML_eff(flux_abs_10, 
-                                    ind=index, 
-                                    energy=energy_flux,
-                                    grating_eff_file=grating_eff_file)
 
 
 ########################################
 # plotting Flux and RP
 
 fig, (axs) = plt.subplots(4, 2,figsize=(10,10))
+
+ens_flux = energy_flux.shape[0]
+ens_rp   = energy_rp.shape[0]
 
 # text
 ax = axs[0,0]
@@ -141,11 +116,9 @@ ax.set_title('CPMU20 Flux')
 
 # PERCENTAGE FLUX
 ax = axs[1,1]
-ax.plot(energy_flux,flux_percent_50, 'r', label='ExitSlit 50 um' )
-ax.plot(energy_flux,flux_percent_40, 'b', label='ExitSlit 40 um' )
-ax.plot(energy_flux,flux_percent_30, 'g', label='ExitSlit 30 um' )
-ax.plot(energy_flux,flux_percent_20, 'orange', label='ExitSlit 20 um' )
-ax.plot(energy_flux,flux_percent_10, 'violet', label='ExitSlit 10 um' )
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    ax.plot(energy_flux,flux_percent[ind*ens_flux:(ind+1)*ens_flux], label=f'ExitSlit {es} um' )
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
@@ -157,11 +130,10 @@ ax.legend()
 # ABSOLUTE FLUX
 ax = axs[2,0]
 
-ax.plot(energy_flux,flux_abs_50, 'r', label='ExitSlit 50 um' )
-ax.plot(energy_flux,flux_abs_40, 'b', label='ExitSlit 40 um' )
-ax.plot(energy_flux,flux_abs_30, 'g', label='ExitSlit 30 um' )
-ax.plot(energy_flux,flux_abs_20, 'orange', label='ExitSlit 20 um' )
-ax.plot(energy_flux,flux_abs_10, 'violet', label='ExitSlit 10 um' )
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    flux_abs = scale_undulator_flux(energy_flux,flux_percent[ind*ens_flux:(ind+1)*ens_flux], undulator_file)
+    ax.plot(energy_flux,flux_abs, label=f'ExitSlit {es} um' )
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Input Flux [ph/s/tbw]')
@@ -173,11 +145,16 @@ ax.grid(which='both', axis='both')
 # ABSOLUTE FLUX SCALED WITH ML EFF.
 ax = axs[2,1]
 
-ax.plot(energy_flux,flux_abs_50_MLBG_mfm_second, 'r', label='ExitSlit 50 um' )
-ax.plot(energy_flux,flux_abs_40_MLBG_mfm_second, 'b', label='ExitSlit 40 um' )
-ax.plot(energy_flux,flux_abs_30_MLBG_mfm_second, 'g', label='ExitSlit 30 um' )
-ax.plot(energy_flux,flux_abs_20_MLBG_mfm_second, 'orange', label='ExitSlit 20 um' )
-ax.plot(energy_flux,flux_abs_10_MLBG_mfm_second, 'violet', label='ExitSlit 10 um' )
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    flux_abs = scale_undulator_flux(energy_flux,
+                                    flux_percent[ind*ens_flux:(ind+1)*ens_flux], 
+                                    undulator_file)
+    flux_abs_ML = ML_eff(flux_abs,
+                         ind=index, 
+                         energy=energy_flux,
+                         grating_eff_file=grating_eff_file)
+    ax.plot(energy_flux,flux_abs_ML, label=f'ExitSlit {es} um' )
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Flux [ph/s/tbw]')
@@ -188,13 +165,10 @@ ax.grid(which='both', axis='both')
 
 # BANDWIDTH
 ax = axs[3,0]
-ss = energy_rp.shape[0]
-ax.plot(energy_rp,bw_ML_2400_2[0*ss:1*ss],'r',label='ExitSlit 50 um')
-ax.plot(energy_rp,bw_ML_2400_2[1*ss:2*ss],'b',label='ExitSlit 40 um')
-ax.plot(energy_rp,bw_ML_2400_2[2*ss:3*ss],'g',label='ExitSlit 30 um')
-ax.plot(energy_rp,bw_ML_2400_2[3*ss:4*ss],'orange',label='ExitSlit 20 um')
-ax.plot(energy_rp,bw_ML_2400_2[4*ss:5*ss],'violet',label='ExitSlit 10 um')
-
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    ax.plot(energy_rp,bw_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp],label=f'ExitSlit {es} um')
+    
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
@@ -205,12 +179,10 @@ ax.grid(which='both', axis='both')
 
 # RESOLVING POWER
 ax = axs[3,1]
-ss = energy_rp.shape[0]
-ax.plot(energy_rp,energy_rp/bw_ML_2400_2[0*ss:1*ss],'r')#,label='ExitSlit 50 um')
-ax.plot(energy_rp,energy_rp/bw_ML_2400_2[1*ss:2*ss],'b')#,label='ExitSlit 40 um')
-ax.plot(energy_rp,energy_rp/bw_ML_2400_2[2*ss:3*ss],'g')#,label='ExitSlit 30 um')
-ax.plot(energy_rp,energy_rp/bw_ML_2400_2[3*ss:4*ss],'orange')#,label='ExitSlit 20 um')
-ax.plot(energy_rp,energy_rp/bw_ML_2400_2[4*ss:5*ss],'violet')#,label='ExitSlit 10 um')
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    ax.plot(energy_rp,energy_rp/bw_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp],label=f'ExitSlit {es} um')
+
 
 ax.axhline(y=6000, color='k', linestyle='dashed', label='RP=6000')
 
@@ -219,7 +191,7 @@ ax.set_ylabel('RP [a.u.]')
 ax.set_title('Resolving Power')
 ax.grid(which='both', axis='both')
 ax.legend()
-
+plt.suptitle('SoTeXs - Flux and Resolving Power', fontsize=16, fontweight='bold')
 plt.tight_layout()
 plt.savefig('plot/battery_beamline_IrCrB4C_2order_FluxRp.png')
 
@@ -228,33 +200,41 @@ plt.savefig('plot/battery_beamline_IrCrB4C_2order_FluxRp.png')
 # plotting FOCUS SIZE
 fig, (axs) = plt.subplots(1, 2,figsize=(10,10))
 
+# VERTICAL FOCUS
+ax = axs[1]
+focy_ML_2400_2 = focy_ML_2400_2*1000 # in micrometer
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    ax.plot(energy_rp,focy_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp],label=f'ExitSlit {es} um')
+bot, top = ax.get_ylim()
+ax.set_ylim(bottom=bot, top=top+2)
+ax.set_xlabel('Energy [eV]')
+ax.set_ylabel('Focus Size [um]')
+ax.set_title('Vertical focus')
+ax.legend()
+
+
 # HORIZONTAL FOCUS
 ax = axs[0]
 focx_ML_2400_2 = focx_ML_2400_2*1000 # in micrometer
-ax.plot(energy_rp, focx_ML_2400_2[0*ss:1*ss], 'r', label='ExitSlit 50 um')
-ax.plot(energy_rp, focx_ML_2400_2[1*ss:2*ss], 'b', label='ExitSlit 40 um')
-ax.plot(energy_rp, focx_ML_2400_2[2*ss:3*ss], 'g', label='ExitSlit 30 um')
-ax.plot(energy_rp, focx_ML_2400_2[3*ss:4*ss], 'violet', label='ExitSlit 20 um')
-ax.plot(energy_rp, focx_ML_2400_2[4*ss:5*ss], 'orange', label='ExitSlit 10 um')
+for ind, val in enumerate(SlitSize):
+    es=int(val*1000)
+    if ind ==0:
+        focx_ML_average=focx_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp]
+    else:
+        focx_ML_average+=focx_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp]
 
+    # ax.plot(energy_rp,focx_ML_2400_2[ind*ens_rp:(ind+1)*ens_rp],label=f'ExitSlit {es} um')
+ax.plot(energy_rp,focx_ML_average/(ind+1),'black', label=f'average')
+# bot = np.average(focx_ML_average/(ind+1))-2
+# top = np.average(focx_ML_average/(ind+1))+2
+ax.set_ylim(bottom=bot, top=top+2)
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
 ax.set_title('Horizontal focus')
 ax.legend()
-
-# VERTICAL FOCUS
-ax = axs[1]
-focy_ML_2400_2 = focy_ML_2400_2*1000 # in micrometer
-ax.plot(energy_rp, focy_ML_2400_2[0*ss:1*ss], 'r', label='ExitSlit 50 um')
-ax.plot(energy_rp, focy_ML_2400_2[1*ss:2*ss], 'b', label='ExitSlit 40 um')
-ax.plot(energy_rp, focy_ML_2400_2[2*ss:3*ss], 'g', label='ExitSlit 30 um')
-ax.plot(energy_rp, focy_ML_2400_2[3*ss:4*ss], 'violet', label='ExitSlit 20 um')
-ax.plot(energy_rp, focy_ML_2400_2[4*ss:5*ss], 'orange', label='ExitSlit 10 um')
-
-ax.set_xlabel('Energy [eV]')
-ax.set_ylabel('Focus Size [um]')
-ax.set_title('Vertical focus')
-
+plt.suptitle('SoTeXs - Focus Size', fontsize=16, fontweight='bold')
+plt.tight_layout()
 plt.savefig('plot/battery_beamline_IrCrB4C_2order_focusSize.png')
 
 plt.show()
