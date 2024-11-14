@@ -3,7 +3,7 @@ from raypyng import Simulate
 
 from multilayer_lib import AndreyML
 from params import order, energy_flux as energy, SlitSize
-from params import nrays_flux as nrays, index, repeat_flux as repeat
+from params import nrays_flux as nrays, ml_index, repeat_flux as repeat
 from params import ncpu_rp as ncpu
 from params import rml_file_name
 
@@ -18,7 +18,7 @@ beamline = sim.rml.beamline
 
 # Andrey ML
 aml = AndreyML(excel_file_name=os.path.join('ML_eff','grating_eff_5000.xlsx'))
-cff = aml.get_cff_for_ML(ind=index, order=order, energy=energy)
+cff = aml.get_cff_for_ML(ind=ml_index, order=order, energy=energy)
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.CPMU20.photonEnergy:energy, 

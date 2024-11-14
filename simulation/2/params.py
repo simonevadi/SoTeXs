@@ -1,4 +1,5 @@
 import numpy as np
+import os 
 
 rml_file_name = 'battery_FLUX_forML_IrCrB4C'
 order         = 2
@@ -10,11 +11,18 @@ cff_1200      = 2.25
 grating_2400  = 2400
 nrays_flux    = 50000
 nrays_rp      = 500000
-index         = 'MLBG_mfm_second'
+ml_index      = 'MLBG_mfm_second'
 repeat_flux   = 1
 repeat_rp     = 1
 ncpu_flux     = 10
 ncpu_rp       = 10
+
+# params only for evaluation
+beamline_name = 'SoTeXS'
+# define undulator file
+undulator_file_path = os.path.join('undulator', 'CPMU20_B2l_k_dep_simp_all_harm_300mA.dbr')
+# Undulator SPECTRA
+undulator_spectra = np.loadtxt(undulator_file_path, skiprows=8)
 
 
 ### plotting colors
