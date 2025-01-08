@@ -7,16 +7,12 @@ from params import ml_SlitSize as SlitSize, ml_grating as grating
 from params import ml_index as index, ml_table
 from params import ml_nrays_rp as nrays, ml_rounds_rp as rounds
 from params import ml_ncpu_rp as ncpu, ml_sim_name_rp as sim_name
-from params import ml_rml_file_path
+from params import ml_rml_file_path, ml_cff as cff
 
 sim = Simulate(ml_rml_file_path, hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
-
-# Andrey ML
-aml = AndreyML(excel_file_name=ml_table)
-cff = aml.get_cff_for_ML(ind=index, order=order, energy=energy)
 
 # define a list of dictionaries with the parameters to scan
 params = [  

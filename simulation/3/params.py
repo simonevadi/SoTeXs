@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import pandas as pd
 
 rounds = 5
 cpu    = 30
@@ -46,6 +47,20 @@ ml_ncpu_rp      = cpu
 ml_sim_name_rp     = '2400_RP'
 ml_sim_name_flux   = '2400_FLUX'
 ml_rml_file_name   = 'sotexs_2400'
+
+grating_file_path = os.path.join('ML_eff',
+        'ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat')
+grating_df = pd.read_csv(grating_file_path, delim_whitespace=True, header=[0, 1])
+
+beta_file_path = os.path.join('ML_eff',
+        'ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat')
+beta_df = pd.read_csv(beta_file_path, delim_whitespace=True, header=[0, 1])
+
+
+ml_cff = grating_df['Cff'].to_numpy().flatten()
+ml_energy_rp = grating_df['Energy'].to_numpy().flatten()
+ml_energy_flux = grating_df['Energy'].to_numpy().flatten()
+
 
 this_file_dir      = os.path.dirname(os.path.realpath(__file__))
 ml_rml_file_path   = os.path.join('rml/'+ml_rml_file_name+'.rml')
