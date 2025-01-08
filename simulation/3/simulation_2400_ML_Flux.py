@@ -8,7 +8,6 @@ from params import ml_index as index, ml_table
 from params import ml_nrays_flux as nrays, ml_rounds_flux as rounds
 from params import ml_ncpu_flux as ncpu, ml_sim_name_flux as sim_name
 from params import ml_rml_file_path
-from params import b3_params
 
 sim = Simulate(ml_rml_file_path, hide=True)
 
@@ -22,10 +21,10 @@ cff = aml.get_cff_for_ML(ind=index, order=order, energy=energy)
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.totalHeight:SlitSize},
-            {beamline.Dipole.photonEnergy:energy, 
+            {beamline.CPMU20.photonEnergy:energy, 
              beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
-            {beamline.Dipole.numberRays:nrays}, 
+            {beamline.CPMU20.numberRays:nrays}, 
         ]
 
 #and then plug them into the Simulation class
@@ -44,7 +43,7 @@ sim.analyze = False # let RAY-UI analyze the results
 sim.raypyng_analysis = True # let RAY-UI analyze the results
 
 ## This must be a list of dictionaries
-sim.exports  =  [{beamline.Dipole:['RawRaysOutgoing']},
+sim.exports  =  [{beamline.CPMU20:['RawRaysOutgoing']},
                  {beamline.DetectorAtFocus:['RawRaysOutgoing']}]
 
 

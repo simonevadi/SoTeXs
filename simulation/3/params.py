@@ -1,15 +1,15 @@
 import numpy as np
 import os
 
-rounds =100
+rounds = 5
 cpu    = 30
-nrays  = 1e4
+nrays  = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
 hb_1200_energy_flux = np.arange(50, 2551,10)
 hb_1200_energy_rp   = np.arange(50, 2551,10)
-hb_1200_SlitSize    = np.array([0.1])
+hb_1200_SlitSize    = np.array([0.05])
 hb_1200_grating     = np.array([1200])
 hb_1200_blaze       = np.array([0.9])
 hb_1200_cff         = np.array([2.25])
@@ -34,7 +34,7 @@ ml_index        = 'MLBG_mfm_second'
 ml_table        = os.path.join('ML_eff', 'grating_eff_5000.xlsx')
 ml_energy_flux  = np.arange(500, 5001,500)
 ml_energy_rp    = np.arange(500, 5001,500)
-ml_SlitSize     = np.array([0.1])
+ml_SlitSize     = np.array([0.05])
 ml_grating      = np.array([2400])
 ml_nrays_flux   = nrays
 ml_nrays_rp     = nrays 
@@ -49,3 +49,11 @@ ml_rml_file_name   = 'sotexs_2400'
 
 this_file_dir      = os.path.dirname(os.path.realpath(__file__))
 ml_rml_file_path   = os.path.join('rml/'+ml_rml_file_name+'.rml')
+
+
+# params only for evaluation
+beamline_name = 'SoTeXS'
+# define undulator file
+undulator_file_path = os.path.join('undulator', 'CPMU20_B2l_k_dep_simp_all_harm_300mA.dbr')
+# Undulator SPECTRA
+undulator_spectra = np.loadtxt(undulator_file_path, skiprows=8)
