@@ -50,7 +50,7 @@ plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
 
 # plotting Flux and RP
-fig, (axs) = plt.subplots(3, 2,figsize=(10,10))
+fig, (axs) = plt.subplots(2, 2,figsize=(20,10))
 log = False
 # MIRROR COATING
 ax=axs[0,0]
@@ -58,7 +58,7 @@ ax=axs[0,0]
 de = 38.9579-30.0000
 table = 'Henke'
 theta = 0.8
-E = np.arange(50, 5001, de)
+E = np.arange(50, 6001, de)
 # triple coating
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
@@ -70,6 +70,7 @@ IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
 
 
 ax.plot(E, IrCrB4C, 'blue', label='IrCrB4C')
+ax.plot(E, IrCrB4C**4, 'red', label='IrCrB4C, 4 mirrors')
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Reflectivity [a.u.]')
@@ -84,31 +85,10 @@ ax.plot(undulator_spectra[:,0], undulator_spectra[:,3])
 ax.set_title('CPMU20 Flux')
 ax.grid(which='both', axis='both')
 
-ax.set_ylabel('Flux [ph/s/0.1A/0.1%bw]')
-
-# AVAILABLE FLUX IN PERCENTAGE
-ax = axs[1,0]
-energy1200 = flux1200['CPMU20.photonEnergy']
-perc_flux_1200 = flux1200['PercentageRaysSurvived']
-
-ax.plot(energy1200,perc_flux_1200, label=f'1200 l/mm' )
-
-ax.set_xlabel(r'Energy [eV]')
-ax.set_ylabel('Transmission [%]')
-ax.set_title('Available Flux (in transmitted bandwidth)')
-ax.grid(which='both', axis='both')
-if log:
-    ax.set_yscale('log')
-
-# Define a custom formatter function to display labels as floats with two decimal places
-def custom_formatter(x, pos):
-    return f"{x:.2}%"
-
-# Apply the custom formatter to the y-axis
-ax.yaxis.set_major_formatter(ticker.FuncFormatter(custom_formatter))
+ax.set_ylabel('Flux [ph/s/0.1A/0.1%BW]')
 
 # AVAILABLE FLUX ABSOLUTE
-ax = axs[1,1]
+ax = axs[1,0]
 energy_1200 = flux1200['CPMU20.photonEnergy']
 perc_flux_1200 = flux1200['PercentageRaysSurvived']
 abs_flux_1200 = scale_undulator_flux(energy_1200,
@@ -125,18 +105,18 @@ abs_flux_ml = scale_undulator_flux(energy_ml,
                                      undulator_file_path)
 
 ax.plot(energy_1200, abs_flux_1200, label=f'1200 l/mm' )
-ax.plot(energy_ml, abs_flux_ml, label=f'ML' )
+ax.plot(energy_ml, abs_flux_ml, label=f'2400 l/mm + ML' )
 if log:
     ax.set_yscale('log')
 ax.set_xlabel('Energy [eV]')
-ax.set_ylabel('Flux [ph/s/0.1A/tbw]')
+ax.set_ylabel('Flux [ph/s/0.1A/TBW]')
 ax.grid(which='both', axis='both')
-ax.set_title('Available Flux (absolute)')
+ax.set_title('Flux')
 # ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
-ax.legend()
+ax.legend(title='cff=2.25, ES=50μm')
 
 # BANDWIDTH
-ax = axs[2,0]
+ax = axs[1,1]
 energy_1200 = rp1200['CPMU20.photonEnergy']
 bw_1200 = rp1200['Bandwidth']
 energy_ml = rpml['CPMU20.photonEnergy']
@@ -152,104 +132,13 @@ inv_energy_line = 6000 / energy_ml
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
-ax.set_title('Transmitted bandwidth (tbw)')
+ax.set_title('Transmitted Bandwidth (TBW)')
 ax.grid(which='both', axis='both')
 
 
-# RESOLVING POWER
-ax = axs[2,1]
-energy_1200 = rp1200['CPMU20.photonEnergy']
-bw_1200 = rp1200['Bandwidth']
-energy_ml = rpml['CPMU20.photonEnergy']
-bw_ml = rpml['Bandwidth']
-
-ax.plot(energy_1200,energy_1200/bw_1200)
-ax.plot(energy_ml,energy_ml/bw_ml)
-ax.axhline(y=6000, color='r', linestyle='--', label='RP 6000')
-
-ax.set_xlabel('Energy [eV]')
-ax.set_ylabel('RP [a.u.]')
-ax.set_title('Resolving Power')
-ax.grid(which='both', axis='both')
 
 plt.suptitle('SoTeXs', fontsize=suptitle_size)
 plt.tight_layout()
-plt.savefig('plot/SoTeXs.png')
-
-# plotting Flux and RP
-fig, (axs) = plt.subplots(2, 1,figsize=(10,10))
-
-# HORIZONTAL FOCUS
-ax = axs[0]
-energy_1200 = rp1200['CPMU20.photonEnergy']
-focx_1200 = rp1200['HorizontalFocusFWHM']
-energy_ml = rpml['CPMU20.photonEnergy']
-focx_ml = rpml['HorizontalFocusFWHM']
-
-ax.plot(energy_1200,focx_1200*1000)
-ax.plot(energy_ml,focx_ml*1000)
-
-ax.set_xlabel('Energy [eV]')
-ax.set_ylabel('Focus Size [um]')
-ax.set_title('Horizontal focus')
-
-# VERTICAL FOCUS
-ax = axs[1]
-energy_1200 = rp1200['CPMU20.photonEnergy']
-focy_1200 = rp1200['VerticalFocusFWHM']
-energy_ml = rpml['CPMU20.photonEnergy']
-focy_ml = rpml['VerticalFocusFWHM']
-
-ax.plot(energy_1200,focy_1200*1000)
-ax.plot(energy_ml,focy_ml*1000)
-
-ax.set_xlabel('Energy [eV]')
-ax.set_ylabel('Focus Size [um]')
-ax.set_title('Vertical focus')
-
-plt.suptitle('SoTeXs Focus Size', fontsize=suptitle_size)
-plt.tight_layout()
-plt.savefig('plot/SoTeXs-Focus.png')
-# plt.show()
-
-
-fig, (axs) = plt.subplots(2, 1,figsize=(10,10))
-
-
-# PERMIL BANDWIDTH
-ax = axs[0]
-energy_1200 = rp1200['CPMU20.photonEnergy']
-permil_bw_1200 = flux1200['EnergyPerMilPerBw']
-permil_bw_ml = fluxml['EnergyPerMilPerBw']
-
-
-ax.plot(energy_1200/1000,permil_bw_1200, label=f'1200 l/mm')
-ax.plot(energy_ml/1000,permil_bw_ml, label=f'ML')
-
-ax.set_xlabel('Energy [keV]')
-ax.set_ylabel('Energy/1000/bandwidth [a.u.]')
-ax.set_title('PerMil Transmission')
-ax.grid(which='both', axis='both')
-ax.legend()
-
-
-# PERMIL FLUX 
-ax = axs[1]
-energy1200 = flux1200['CPMU20.photonEnergy']
-permil_flux_1200 = flux1200['FluxPerMilPerBwPerc']
-permil_flux_ml = fluxml['FluxPerMilPerBwPerc']
-
-ax.plot(energy_1200,permil_flux_1200)
-ax.plot(energy_ml,permil_flux_ml)
-
-ax.set_xlabel(r'Energy [eV]')
-ax.set_ylabel('Flux [ph/s/0.1A/tbw]')
-ax.set_title('Transmission / Per Mil bandwidth')
-ax.grid(which='both', axis='both')
-# ax.set_yscale('log')
-
-plt.suptitle('SoTeXs PerMil', fontsize=suptitle_size)
-plt.tight_layout()
-plt.savefig('plot/SoTeXs-PerMil.png')
+plt.savefig('plot/SoTeXs_kickoff.png')
 
 

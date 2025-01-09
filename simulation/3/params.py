@@ -2,7 +2,8 @@ import numpy as np
 import os
 import pandas as pd
 
-rounds = 5
+rounds_1200 = 20
+rounds_ml = 10
 cpu    = 30
 nrays  = 5e5
 
@@ -16,8 +17,8 @@ hb_1200_blaze       = np.array([0.9])
 hb_1200_cff         = np.array([2.25])
 hb_1200_nrays_flux  = nrays
 hb_1200_nrays_rp    = nrays 
-hb_1200_rounds_flux = rounds
-hb_1200_rounds_rp   = rounds
+hb_1200_rounds_flux = rounds_1200
+hb_1200_rounds_rp   = rounds_1200
 hb_1200_ncpu_flux   = cpu
 hb_1200_ncpu_rp     = cpu
 
@@ -39,8 +40,8 @@ ml_SlitSize     = np.array([0.05])
 ml_grating      = np.array([2400])
 ml_nrays_flux   = nrays
 ml_nrays_rp     = nrays 
-ml_rounds_flux  = rounds
-ml_rounds_rp    = rounds
+ml_rounds_flux  = rounds_ml
+ml_rounds_rp    = rounds_ml
 ml_ncpu_flux    = cpu
 ml_ncpu_rp      = cpu
 
