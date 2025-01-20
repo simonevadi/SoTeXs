@@ -1,0 +1,88 @@
+2024-11-13 16:13:37,669 - INFO - Simulation started, using 10 workers
+2024-11-13 16:13:37,671 - INFO - Start round 0
+2024-11-13 16:13:37,672 - INFO - Prepared sim number: 0: RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:13:37,673 - INFO - Prepared sim number: 1: RAYPy_Simulation_RP_ML/round_0/1_RP_ML.rml
+2024-11-13 16:13:37,674 - INFO - Prepared sim number: 2: RAYPy_Simulation_RP_ML/round_0/2_RP_ML.rml
+2024-11-13 16:13:37,675 - INFO - Prepared sim number: 3: RAYPy_Simulation_RP_ML/round_0/3_RP_ML.rml
+2024-11-13 16:13:37,676 - INFO - Prepared sim number: 4: RAYPy_Simulation_RP_ML/round_0/4_RP_ML.rml
+2024-11-13 16:13:37,677 - INFO - Prepared sim number: 5: RAYPy_Simulation_RP_ML/round_0/5_RP_ML.rml
+2024-11-13 16:13:37,678 - INFO - Prepared sim number: 6: RAYPy_Simulation_RP_ML/round_0/6_RP_ML.rml
+2024-11-13 16:13:37,679 - INFO - Prepared sim number: 7: RAYPy_Simulation_RP_ML/round_0/7_RP_ML.rml
+2024-11-13 16:13:37,680 - INFO - Prepared sim number: 8: RAYPy_Simulation_RP_ML/round_0/8_RP_ML.rml
+2024-11-13 16:13:37,682 - INFO - Prepared sim number: 9: RAYPy_Simulation_RP_ML/round_0/9_RP_ML.rml
+2024-11-13 16:13:37,684 - INFO - Prepared sim number: 10: RAYPy_Simulation_RP_ML/round_0/10_RP_ML.rml
+2024-11-13 16:13:37,686 - INFO - Prepared sim number: 11: RAYPy_Simulation_RP_ML/round_0/11_RP_ML.rml
+2024-11-13 16:13:37,687 - INFO - Prepared sim number: 12: RAYPy_Simulation_RP_ML/round_0/12_RP_ML.rml
+2024-11-13 16:13:37,689 - INFO - Prepared sim number: 13: RAYPy_Simulation_RP_ML/round_0/13_RP_ML.rml
+2024-11-13 16:13:37,690 - INFO - Prepared sim number: 14: RAYPy_Simulation_RP_ML/round_0/14_RP_ML.rml
+2024-11-13 16:13:37,691 - INFO - Prepared sim number: 15: RAYPy_Simulation_RP_ML/round_0/15_RP_ML.rml
+2024-11-13 16:13:37,693 - INFO - Prepared sim number: 16: RAYPy_Simulation_RP_ML/round_0/16_RP_ML.rml
+2024-11-13 16:13:37,694 - INFO - Prepared sim number: 17: RAYPy_Simulation_RP_ML/round_0/17_RP_ML.rml
+2024-11-13 16:13:37,696 - INFO - Prepared sim number: 18: RAYPy_Simulation_RP_ML/round_0/18_RP_ML.rml
+2024-11-13 16:13:37,698 - INFO - Prepared sim number: 19: RAYPy_Simulation_RP_ML/round_0/19_RP_ML.rml
+2024-11-13 16:13:37,725 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-11-13 16:14:09,187 - INFO - Completed: 1, remaining: 49, RAYPy_Simulation_RP_ML/round_0/5_RP_ML.rml
+2024-11-13 16:14:11,928 - INFO - Completed: 2, remaining: 48, RAYPy_Simulation_RP_ML/round_0/6_RP_ML.rml
+2024-11-13 16:14:13,095 - INFO - Completed: 3, remaining: 47, RAYPy_Simulation_RP_ML/round_0/2_RP_ML.rml
+2024-11-13 16:14:14,147 - INFO - Completed: 4, remaining: 46, RAYPy_Simulation_RP_ML/round_0/3_RP_ML.rml
+2024-11-13 16:14:14,917 - INFO - Completed: 5, remaining: 45, RAYPy_Simulation_RP_ML/round_0/8_RP_ML.rml
+2024-11-13 16:14:15,012 - INFO - Completed: 6, remaining: 44, RAYPy_Simulation_RP_ML/round_0/1_RP_ML.rml
+2024-11-13 16:14:16,307 - INFO - Completed: 7, remaining: 43, RAYPy_Simulation_RP_ML/round_0/4_RP_ML.rml
+2024-11-13 16:14:16,440 - INFO - Completed: 8, remaining: 42, RAYPy_Simulation_RP_ML/round_0/9_RP_ML.rml
+2024-11-13 16:14:17,772 - INFO - Completed: 9, remaining: 41, RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:14:20,254 - INFO - Completed: 10, remaining: 40, RAYPy_Simulation_RP_ML/round_0/7_RP_ML.rml
+2024-11-13 16:14:37,725 - INFO - Exception during simulation: 10 (of 20) futures unfinished
+2024-11-13 16:14:42,731 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:14:47,736 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:14:52,741 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:14:57,746 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:02,752 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:07,757 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:12,763 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:17,768 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:22,774 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:27,780 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:32,785 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:37,790 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:42,796 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:47,800 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:52,805 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:15:57,811 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:02,816 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:07,821 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:12,826 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:17,831 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:22,836 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:27,841 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:32,846 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:37,852 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:42,857 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:47,863 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:52,868 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:16:57,874 - INFO - Waiting for file RAYPy_Simulation_RP_ML/round_0/0_RP_ML.rml
+2024-11-13 16:17:03,292 - INFO - Simulation started, using 10 workers
+2024-11-13 16:17:03,294 - INFO - Start round 0
+2024-11-13 16:17:03,295 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-11-13 16:17:03,295 - INFO - Batch Completed
+2024-11-13 16:17:03,295 - INFO - Waiting For batch, 50 simulations to go
+2024-11-13 16:17:03,295 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-11-13 16:17:03,295 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-11-13 16:17:03,295 - INFO - Executor shutdown completed.
+2024-11-13 16:17:03,295 - INFO - Simulation completed successfully.
+2024-11-13 16:17:03,295 - INFO - Starting cleanup
+2024-11-13 16:17:03,304 - INFO - Done with the cleanup
+2024-11-13 16:17:03,304 - INFO - Create Pandas Recap Files
+2024-11-13 16:17:03,310 - INFO - End of the Simulations
+2024-11-14 08:49:17,213 - INFO - Simulation started, using 10 workers
+2024-11-14 08:49:17,215 - INFO - Start round 0
+2024-11-14 08:49:17,216 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-11-14 08:49:17,217 - INFO - Batch Completed
+2024-11-14 08:49:17,217 - INFO - Waiting For batch, 50 simulations to go
+2024-11-14 08:49:17,217 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-11-14 08:49:17,217 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-11-14 08:49:17,217 - INFO - Executor shutdown completed.
+2024-11-14 08:49:17,217 - INFO - Simulation completed successfully.
+2024-11-14 08:49:17,217 - INFO - Starting cleanup
+2024-11-14 08:49:17,229 - INFO - Done with the cleanup
+2024-11-14 08:49:17,229 - INFO - Create Pandas Recap Files
+2024-11-14 08:49:17,237 - INFO - End of the Simulations

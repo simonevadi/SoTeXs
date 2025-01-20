@@ -1,0 +1,184 @@
+2024-09-09 14:36:28,218 - INFO - Simulation started, using 10 workers
+2024-09-09 14:36:28,219 - INFO - Start round 0
+2024-09-09 14:36:28,221 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-09-09 14:36:28,222 - INFO - Batch Completed
+2024-09-09 14:36:28,222 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,222 - INFO - Start round 1
+2024-09-09 14:36:28,222 - INFO - Waiting for batch number: 1, timeout: 60s
+2024-09-09 14:36:28,222 - INFO - Batch Completed
+2024-09-09 14:36:28,222 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,222 - INFO - Start round 2
+2024-09-09 14:36:28,223 - INFO - Waiting for batch number: 2, timeout: 60s
+2024-09-09 14:36:28,223 - INFO - Batch Completed
+2024-09-09 14:36:28,223 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,223 - INFO - Start round 3
+2024-09-09 14:36:28,224 - INFO - Waiting for batch number: 3, timeout: 60s
+2024-09-09 14:36:28,224 - INFO - Batch Completed
+2024-09-09 14:36:28,224 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,224 - INFO - Start round 4
+2024-09-09 14:36:28,224 - INFO - Waiting for batch number: 4, timeout: 60s
+2024-09-09 14:36:28,224 - INFO - Batch Completed
+2024-09-09 14:36:28,224 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,224 - INFO - Start round 5
+2024-09-09 14:36:28,225 - INFO - Waiting for batch number: 5, timeout: 60s
+2024-09-09 14:36:28,225 - INFO - Batch Completed
+2024-09-09 14:36:28,225 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,225 - INFO - Start round 6
+2024-09-09 14:36:28,226 - INFO - Waiting for batch number: 6, timeout: 60s
+2024-09-09 14:36:28,226 - INFO - Batch Completed
+2024-09-09 14:36:28,226 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,226 - INFO - Start round 7
+2024-09-09 14:36:28,227 - INFO - Waiting for batch number: 7, timeout: 60s
+2024-09-09 14:36:28,227 - INFO - Batch Completed
+2024-09-09 14:36:28,227 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,227 - INFO - Start round 8
+2024-09-09 14:36:28,227 - INFO - Waiting for batch number: 8, timeout: 60s
+2024-09-09 14:36:28,227 - INFO - Batch Completed
+2024-09-09 14:36:28,227 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,227 - INFO - Start round 9
+2024-09-09 14:36:28,228 - INFO - Waiting for batch number: 9, timeout: 60s
+2024-09-09 14:36:28,228 - INFO - Batch Completed
+2024-09-09 14:36:28,228 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,228 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-09-09 14:36:28,228 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-09-09 14:36:28,235 - INFO - Executor shutdown completed.
+2024-09-09 14:36:28,235 - INFO - Simulation completed successfully.
+2024-09-09 14:36:28,235 - INFO - End of the Simulations
+2024-09-09 14:36:28,920 - INFO - Simulation started, using 10 workers
+2024-09-09 14:36:28,921 - INFO - Start round 0
+2024-09-09 14:36:28,924 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-09-09 14:36:28,924 - INFO - Batch Completed
+2024-09-09 14:36:28,924 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,924 - INFO - Start round 1
+2024-09-09 14:36:28,924 - INFO - Waiting for batch number: 1, timeout: 60s
+2024-09-09 14:36:28,924 - INFO - Batch Completed
+2024-09-09 14:36:28,924 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,924 - INFO - Start round 2
+2024-09-09 14:36:28,925 - INFO - Waiting for batch number: 2, timeout: 60s
+2024-09-09 14:36:28,925 - INFO - Batch Completed
+2024-09-09 14:36:28,925 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,925 - INFO - Start round 3
+2024-09-09 14:36:28,926 - INFO - Waiting for batch number: 3, timeout: 60s
+2024-09-09 14:36:28,926 - INFO - Batch Completed
+2024-09-09 14:36:28,926 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,926 - INFO - Start round 4
+2024-09-09 14:36:28,927 - INFO - Waiting for batch number: 4, timeout: 60s
+2024-09-09 14:36:28,927 - INFO - Batch Completed
+2024-09-09 14:36:28,927 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,927 - INFO - Start round 5
+2024-09-09 14:36:28,929 - INFO - Waiting for batch number: 5, timeout: 60s
+2024-09-09 14:36:28,929 - INFO - Batch Completed
+2024-09-09 14:36:28,929 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,929 - INFO - Start round 6
+2024-09-09 14:36:28,930 - INFO - Waiting for batch number: 6, timeout: 60s
+2024-09-09 14:36:28,930 - INFO - Batch Completed
+2024-09-09 14:36:28,930 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,930 - INFO - Start round 7
+2024-09-09 14:36:28,931 - INFO - Waiting for batch number: 7, timeout: 60s
+2024-09-09 14:36:28,931 - INFO - Batch Completed
+2024-09-09 14:36:28,931 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,931 - INFO - Start round 8
+2024-09-09 14:36:28,931 - INFO - Waiting for batch number: 8, timeout: 60s
+2024-09-09 14:36:28,931 - INFO - Batch Completed
+2024-09-09 14:36:28,931 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,931 - INFO - Start round 9
+2024-09-09 14:36:28,932 - INFO - Waiting for batch number: 9, timeout: 60s
+2024-09-09 14:36:28,932 - INFO - Batch Completed
+2024-09-09 14:36:28,932 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:28,932 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-09-09 14:36:28,932 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-09-09 14:36:28,938 - INFO - Executor shutdown completed.
+2024-09-09 14:36:28,939 - INFO - Simulation completed successfully.
+2024-09-09 14:36:28,939 - INFO - End of the Simulations
+2024-09-09 14:36:29,644 - INFO - Simulation started, using 10 workers
+2024-09-09 14:36:29,646 - INFO - Start round 0
+2024-09-09 14:36:29,649 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-09-09 14:36:29,649 - INFO - Batch Completed
+2024-09-09 14:36:29,649 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,649 - INFO - Start round 1
+2024-09-09 14:36:29,649 - INFO - Waiting for batch number: 1, timeout: 60s
+2024-09-09 14:36:29,649 - INFO - Batch Completed
+2024-09-09 14:36:29,649 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,649 - INFO - Start round 2
+2024-09-09 14:36:29,650 - INFO - Waiting for batch number: 2, timeout: 60s
+2024-09-09 14:36:29,650 - INFO - Batch Completed
+2024-09-09 14:36:29,650 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,650 - INFO - Start round 3
+2024-09-09 14:36:29,651 - INFO - Waiting for batch number: 3, timeout: 60s
+2024-09-09 14:36:29,651 - INFO - Batch Completed
+2024-09-09 14:36:29,651 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,651 - INFO - Start round 4
+2024-09-09 14:36:29,652 - INFO - Waiting for batch number: 4, timeout: 60s
+2024-09-09 14:36:29,652 - INFO - Batch Completed
+2024-09-09 14:36:29,652 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,652 - INFO - Start round 5
+2024-09-09 14:36:29,652 - INFO - Waiting for batch number: 5, timeout: 60s
+2024-09-09 14:36:29,652 - INFO - Batch Completed
+2024-09-09 14:36:29,652 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,652 - INFO - Start round 6
+2024-09-09 14:36:29,653 - INFO - Waiting for batch number: 6, timeout: 60s
+2024-09-09 14:36:29,653 - INFO - Batch Completed
+2024-09-09 14:36:29,653 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,653 - INFO - Start round 7
+2024-09-09 14:36:29,654 - INFO - Waiting for batch number: 7, timeout: 60s
+2024-09-09 14:36:29,654 - INFO - Batch Completed
+2024-09-09 14:36:29,654 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,654 - INFO - Start round 8
+2024-09-09 14:36:29,655 - INFO - Waiting for batch number: 8, timeout: 60s
+2024-09-09 14:36:29,655 - INFO - Batch Completed
+2024-09-09 14:36:29,655 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,655 - INFO - Start round 9
+2024-09-09 14:36:29,655 - INFO - Waiting for batch number: 9, timeout: 60s
+2024-09-09 14:36:29,655 - INFO - Batch Completed
+2024-09-09 14:36:29,655 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:29,655 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-09-09 14:36:29,655 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-09-09 14:36:29,662 - INFO - Executor shutdown completed.
+2024-09-09 14:36:29,662 - INFO - Simulation completed successfully.
+2024-09-09 14:36:29,662 - INFO - End of the Simulations
+2024-09-09 14:36:30,562 - INFO - Simulation started, using 10 workers
+2024-09-09 14:36:30,564 - INFO - Start round 0
+2024-09-09 14:36:30,568 - INFO - Waiting for batch number: 0, timeout: 60s
+2024-09-09 14:36:30,568 - INFO - Batch Completed
+2024-09-09 14:36:30,568 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,568 - INFO - Start round 1
+2024-09-09 14:36:30,569 - INFO - Waiting for batch number: 1, timeout: 60s
+2024-09-09 14:36:30,569 - INFO - Batch Completed
+2024-09-09 14:36:30,569 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,569 - INFO - Start round 2
+2024-09-09 14:36:30,570 - INFO - Waiting for batch number: 2, timeout: 60s
+2024-09-09 14:36:30,570 - INFO - Batch Completed
+2024-09-09 14:36:30,570 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,570 - INFO - Start round 3
+2024-09-09 14:36:30,571 - INFO - Waiting for batch number: 3, timeout: 60s
+2024-09-09 14:36:30,571 - INFO - Batch Completed
+2024-09-09 14:36:30,571 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,571 - INFO - Start round 4
+2024-09-09 14:36:30,572 - INFO - Waiting for batch number: 4, timeout: 60s
+2024-09-09 14:36:30,572 - INFO - Batch Completed
+2024-09-09 14:36:30,572 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,572 - INFO - Start round 5
+2024-09-09 14:36:30,573 - INFO - Waiting for batch number: 5, timeout: 60s
+2024-09-09 14:36:30,573 - INFO - Batch Completed
+2024-09-09 14:36:30,573 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,573 - INFO - Start round 6
+2024-09-09 14:36:30,574 - INFO - Waiting for batch number: 6, timeout: 60s
+2024-09-09 14:36:30,574 - INFO - Batch Completed
+2024-09-09 14:36:30,574 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,574 - INFO - Start round 7
+2024-09-09 14:36:30,575 - INFO - Waiting for batch number: 7, timeout: 60s
+2024-09-09 14:36:30,575 - INFO - Batch Completed
+2024-09-09 14:36:30,575 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,575 - INFO - Start round 8
+2024-09-09 14:36:30,576 - INFO - Waiting for batch number: 8, timeout: 60s
+2024-09-09 14:36:30,576 - INFO - Batch Completed
+2024-09-09 14:36:30,576 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,576 - INFO - Start round 9
+2024-09-09 14:36:30,577 - INFO - Waiting for batch number: 9, timeout: 60s
+2024-09-09 14:36:30,577 - INFO - Batch Completed
+2024-09-09 14:36:30,577 - INFO - Waiting For batch, 50 simulations to go
+2024-09-09 14:36:30,577 - INFO - Remaning Simulations 0, stop the simulations loop
+2024-09-09 14:36:30,577 - INFO - Checking that all simulations are completed before stopping the ProcessPoolExecutor
+2024-09-09 14:36:30,586 - INFO - Executor shutdown completed.
+2024-09-09 14:36:30,586 - INFO - Simulation completed successfully.
+2024-09-09 14:36:30,586 - INFO - End of the Simulations
