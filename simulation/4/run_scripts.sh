@@ -6,5 +6,7 @@ do
     printf $py_file 
     printf "\n"
     python $py_file
+    # find . -type d -name "round_*" -exec rm -r {} +
+
 
 done
