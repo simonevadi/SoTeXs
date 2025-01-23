@@ -45,7 +45,7 @@ ml_rounds_rp    = rounds_ml
 ml_ncpu_flux    = cpu
 ml_ncpu_rp      = cpu
 
-ml_sim_name_rp     = '2400_RP_'
+ml_sim_name_rp     = '2400_RP_new'
 ml_sim_name_flux   = '2400_FLUX_new'
 ml_rml_file_name   = 'sotexs_2400_new'
 

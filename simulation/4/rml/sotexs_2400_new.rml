@@ -132,7 +132,7 @@
   <object name="Premirror M2" type="Plane Mirror">
    <param id="geometricalShape" comment="rectangle" enabled="T">0</param>
    <param id="totalWidth" enabled="T">25</param>
-   <param id="totalLength" enabled="T">2000</param>
+   <param id="totalLength" enabled="T">500</param>
    <param id="grazingIncAngle" enabled="F">4.792199593081222</param>
    <param id="distancePreceding" enabled="F">4181.556206808367</param>
    <param id="azimuthalAngle" enabled="F">0</param>

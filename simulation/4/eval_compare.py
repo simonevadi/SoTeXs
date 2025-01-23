@@ -37,7 +37,7 @@ plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
 
 # plotting Flux and RP
-fig, (axs) = plt.subplots(3, 2,figsize=(10,10))
+fig, (axs) = plt.subplots(3, 2,figsize=(15,15))
 log = False
 # MIRROR COATING
 ax=axs[0,0]
@@ -75,16 +75,16 @@ ax.set_ylabel('Flux [ph/s/0.1A/0.1%bw]')
 
 
 flux_simulation_folder_1200_list = ['RAYPy_Simulation_' + hb_1200_sim_name_flux, 
-                                    'RAYPy_Simulation_' + hb_1200_sim_name_flux[:-6]]
+                                    'RAYPy_Simulation_' + hb_1200_sim_name_flux[:-4]]
 rp_simulation_folder_1200_list   = ['RAYPy_Simulation_' + hb_1200_sim_name_rp,
-                                    'RAYPy_Simulation_' + hb_1200_sim_name_rp[:-6]]
+                                    'RAYPy_Simulation_' + hb_1200_sim_name_rp[:-4]]
 flux_simulation_folder_ml_list = ['RAYPy_Simulation_' + ml_sim_name_flux,
-                                  'RAYPy_Simulation_' + ml_sim_name_flux[:-6]]
+                                  'RAYPy_Simulation_' + ml_sim_name_flux[:-4]]
 rp_simulation_folder_ml_list   = ['RAYPy_Simulation_' + ml_sim_name_rp,
-                                  'RAYPy_Simulation_' + ml_sim_name_rp[:-6]]
+                                  'RAYPy_Simulation_' + ml_sim_name_rp[:-4]]
 
 color_list = [('blue','orange'), ('cyan', 'red')]
-labels_list = ['M1 out', 'M1 in']
+labels_list = ['New', 'Old']
 for ind in range (2):
     flux_simulation_folder_1200 = flux_simulation_folder_1200_list[ind]
     rp_simulation_folder_1200   = rp_simulation_folder_1200_list[ind]
@@ -229,7 +229,7 @@ for ind in range (2):
     ax.plot(p.moving_average(energy_1200,window),p.moving_average(focx_1200*1000,window),
             color=color_list[ind][0], label=f'{labels_list[ind]}, 1200 l/mm')
     ax.plot(p.moving_average(energy_ml,window),p.moving_average(focx_ml*1000,window),
-            color=color_list[ind][1], label=f'{labels_list[ind]}, 1200 l/mm')
+            color=color_list[ind][1], label=f'{labels_list[ind]}, 2400 l/mm')
 
     ax.set_xlabel('Energy [eV]')
     ax.set_ylabel('Focus Size [um]')
@@ -245,7 +245,7 @@ for ind in range (2):
     ax.plot(p.moving_average(energy_1200, window),p.moving_average(focy_1200*1000,window),
             color=color_list[ind][0], label=f'{labels_list[ind]}, 1200 l/mm')
     ax.plot(p.moving_average(energy_ml,window),p.moving_average(focy_ml*1000,window),
-            color=color_list[ind][1], label=f'{labels_list[ind]}, 1200 l/mm')
+            color=color_list[ind][1], label=f'{labels_list[ind]}, 2400 l/mm')
 
     ax.set_xlabel('Energy [eV]')
     ax.set_ylabel('Focus Size [um]')
@@ -286,7 +286,7 @@ for ind in range (2):
     ax.plot(p.moving_average(energy_1200/1000,window),p.moving_average(permil_bw_1200,window),
             color=color_list[ind][0], label=f'{labels_list[ind]}, 1200 l/mm')
     ax.plot(p.moving_average(energy_ml/1000,window),p.moving_average(permil_bw_ml,window), 
-            color=color_list[ind][1], label=f'{labels_list[ind]}, 1200 l/mm')
+            color=color_list[ind][1], label=f'{labels_list[ind]}, 2400 l/mm')
 
     ax.set_xlabel('Energy [keV]')
     ax.set_ylabel('Energy/1000/bandwidth [a.u.]')
@@ -304,7 +304,7 @@ for ind in range (2):
     ax.plot(p.moving_average(energy_1200,10),p.moving_average(permil_flux_1200,10), 
             color=color_list[ind][0], label=f'{labels_list[ind]}, 1200 l/mm')
     ax.plot(p.moving_average(energy_ml,10),p.moving_average(permil_flux_ml,10),
-            color=color_list[ind][1], label=f'{labels_list[ind]}, 1200 l/mm')
+            color=color_list[ind][1], label=f'{labels_list[ind]}, 2400 l/mm')
 
     ax.set_xlabel(r'Energy [eV]')
     ax.set_ylabel('Flux [ph/s/0.1A/tbw]')
