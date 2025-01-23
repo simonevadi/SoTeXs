@@ -22,9 +22,9 @@ hb_1200_rounds_rp   = rounds_1200
 hb_1200_ncpu_flux   = cpu
 hb_1200_ncpu_rp     = cpu
 
-hb_1200_sim_name_flux = '1200_FLUX_m1_in'
-hb_1200_sim_name_rp   = '1200_RP_m1_in'
-hb_1200_rml_file_name = 'sotexs_1200_m1_in'
+hb_1200_sim_name_flux = '1200_FLUX_new'
+hb_1200_sim_name_rp   = '1200_RP_new'
+hb_1200_rml_file_name = 'sotexs_1200_new'
 
 this_file_dir   = os.path.dirname(os.path.realpath(__file__))
 hb_1200_file_path   = os.path.join('rml/'+hb_1200_rml_file_name+'.rml')
@@ -45,9 +45,9 @@ ml_rounds_rp    = rounds_ml
 ml_ncpu_flux    = cpu
 ml_ncpu_rp      = cpu
 
-ml_sim_name_rp     = '2400_RP_m1_in'
-ml_sim_name_flux   = '2400_FLUX_m1_in'
-ml_rml_file_name   = 'sotexs_2400_m1_in'
+ml_sim_name_rp     = '2400_RP_'
+ml_sim_name_flux   = '2400_FLUX_new'
+ml_rml_file_name   = 'sotexs_2400_new'
 
 grating_file_path = os.path.join('ML_eff',
         'ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat')
