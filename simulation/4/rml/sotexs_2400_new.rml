@@ -137,7 +137,7 @@
    <param id="distancePreceding" enabled="F">4181.556206808367</param>
    <param id="azimuthalAngle" enabled="F">0</param>
    <param id="systemMount" comment="SX700 (as premirror of a grating)" enabled="T">1</param>
-   <param id="premirrorShiftZ" enabled="T">-30</param>
+   <param id="premirrorShiftZ" enabled="T">-300</param>
    <param id="pimpaleAlpha1" enabled="T">1</param>
    <param id="pimpaleAlpha2" enabled="T">2</param>
    <param id="pimpaleAlpha3" enabled="T">3</param>
@@ -181,9 +181,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-119.2750448973543627</x>
-    <y>7.5637747624917679</y>
-    <z>16770.1126008999635815</z>
+    <x>-111.7625564096910153</x>
+    <y>-14.9926130937750823</y>
+    <z>16501.1613564640974801</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>0.9996101150403545</x>
