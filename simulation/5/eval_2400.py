@@ -41,7 +41,7 @@ ax.set_xlabel('Energy [eV]')
 # MIRROR COATING
 de = 38.9579-30.0000
 table = 'Henke'
-theta = 1.0
+theta = 0.8
 E = np.arange(500, 6001, de)
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
@@ -56,8 +56,8 @@ IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
 ax2=axs[0,0]
 ax2.set_xlabel('Energy [eV]')
 ax2.set_ylabel('Reflectivity [a.u.]')
-ax2.set_title('Mirror Coating Reflectivity at 1.5° ')
-ax2.plot(E, IrCrB4C, label='IrCrB4C@1.0°')
+ax2.set_title(f'Mirror Coating Reflectivity at {theta}° ')
+ax2.plot(E, IrCrB4C, label='IrCrB4C')
 ax2.legend()
 
 
@@ -71,8 +71,8 @@ for ind, es in enumerate(exit_slit_list):
     perc_flux = filtered_flux['PercentageRaysSurvived']
     perc_flux = ML_eff_new(energy, perc_flux)
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'es {es}')
-    ax2.plot(energy,abs_flux, label=f'es {es}')
+    ax.plot(energy,perc_flux, label=f'es {es} um')
+    ax2.plot(energy,abs_flux, label=f'es {es} um')
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
@@ -93,7 +93,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(energy,bw, label=f'es {es}' )
+    ax.plot(energy,bw, label=f'es {es} um' )
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
 ax.set_title('Transmitted bandwidth (tbw)')
@@ -113,7 +113,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(energy,energy/bw, label=f'es {es}' )
+    ax.plot(energy,energy/bw, label=f'es {es} um' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('RP [a.u.]')
@@ -141,7 +141,7 @@ for ind, es in enumerate(exit_slit_list):
 focx = np.array(focx)
 focx = np.mean(focx, axis=0)
 
-ax.plot(energy,focx*1000, label=f'es {es}' )
+ax.plot(energy,focx*1000, label=f'es {es} um' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
@@ -154,7 +154,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(energy,focy*1000, label=f'ExitSlit {es}' )
+    ax.plot(energy,focy*1000, label=f'ExitSlit {es} um' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
@@ -175,7 +175,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(energy,bw, label=f'es {es}')
+    ax.plot(energy,bw, label=f'es {es} um')
 
 ax.set_xlabel('Energy [keV]')
 ax.set_ylabel('Energy/1000/bandwidth [a.u.]')

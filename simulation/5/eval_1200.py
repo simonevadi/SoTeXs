@@ -45,7 +45,7 @@ ax.set_xlabel('Energy [eV]')
 # MIRROR COATING
 de = 38.9579-30.0000
 table = 'Henke'
-theta = 1.0
+theta = 0.8
 E = np.arange(50, 5001, de)
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
@@ -60,8 +60,8 @@ IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
 ax2=axs[0,0]
 ax2.set_xlabel('Energy [eV]')
 ax2.set_ylabel('Reflectivity [a.u.]')
-ax2.set_title('Mirror Coating Reflectivity at 1.5° ')
-ax2.plot(E, IrCrB4C, label='IrCrB4C@1.0°')
+ax2.set_title(f'Mirror Coating Reflectivity at {theta}° ')
+ax2.plot(E, IrCrB4C, label='IrCrB4C')
 ax2.legend()
 
 
