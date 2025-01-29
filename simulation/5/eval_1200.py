@@ -27,8 +27,8 @@ oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 flux = pd.read_csv(os.path.join(flux_simulation_folder, oe))
 rp = pd.read_csv(os.path.join(rp_simulation_folder, oe))
 cff_list = flux['PG.cFactor'].unique()
-print(cff_list)
-
+flux = flux[flux['CPMU20.photonEnergy'] >= 500]
+rp = rp[rp['CPMU20.photonEnergy'] >= 500]
 # plotting Flux and RP
 fig, (axs) = plt.subplots(4, 2,figsize=(10,10))
 
@@ -46,7 +46,7 @@ ax.set_xlabel('Energy [eV]')
 de = 38.9579-30.0000
 table = 'Henke'
 theta = 0.8
-E = np.arange(50, 5001, de)
+E = np.arange(500, 5001, de)
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
 B4C = rm.Material('C', rho=2.52,  kind='mirror',  table=table)
@@ -163,7 +163,7 @@ ax.set_title('Vertical focus')
 
 plt.suptitle('SoTeXs, 1200 l/mm blazed grating')
 plt.tight_layout()
-plt.savefig('plot/PGM-1200-Dipole.png')
+plt.savefig('plot/SoTeXS-1200.png')
 # plt.show()
 
 
@@ -197,9 +197,9 @@ ax.set_ylabel('Flux [ph/s/tbw]')
 ax.set_title('Transmission / Per MIl bandwidth')
 ax.grid(which='both', axis='both')
 
-plt.suptitle('SoTeXs, 2400 l/mm blazed grating + ML')
+plt.suptitle('SoTeXs, 1200 l/mm blazed grating')
 plt.tight_layout()
-plt.savefig('plot/PGM-1200-Dipole-PerMil.png')
+plt.savefig('plot/SoTeXS-1200-PerMil.png')
 
 
 # print('simo')

@@ -61,7 +61,6 @@ ax2.plot(E, IrCrB4C, label='IrCrB4C')
 ax2.legend()
 
 
-
 # AVAILABLE/ABS FLUX 
 ax = axs[1,0]
 ax2 = axs[1,1]
@@ -71,8 +70,8 @@ for ind, es in enumerate(exit_slit_list):
     perc_flux = filtered_flux['PercentageRaysSurvived']
     perc_flux = ML_eff_new(energy, perc_flux)
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'es {es} um')
-    ax2.plot(energy,abs_flux, label=f'es {es} um')
+    ax.plot(energy,perc_flux, label=f'es {es} μm')
+    ax2.plot(energy,abs_flux, label=f'es {es} μm')
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
@@ -93,7 +92,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(energy,bw, label=f'es {es} um' )
+    ax.plot(energy,bw, label=f'es {es} μm' )
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
 ax.set_title('Transmitted bandwidth (tbw)')
@@ -113,7 +112,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(energy,energy/bw, label=f'es {es} um' )
+    ax.plot(energy,energy/bw, label=f'es {es} μm' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('RP [a.u.]')
@@ -141,7 +140,7 @@ for ind, es in enumerate(exit_slit_list):
 focx = np.array(focx)
 focx = np.mean(focx, axis=0)
 
-ax.plot(energy,focx*1000, label=f'es {es} um' )
+ax.plot(energy,focx*1000, label=f'es {es} μm' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
@@ -154,15 +153,15 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(energy,focy*1000, label=f'ExitSlit {es} um' )
+    ax.plot(energy,focy*1000, label=f'ExitSlit {es} μm' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
 ax.set_title('Vertical focus')
 
-plt.suptitle('SoTeXs, 2400 l/mm blazed grating')
+plt.suptitle('SoTeXs, 2400 l/mm blazed grating + ML')
 plt.tight_layout()
-plt.savefig('plot/PGM-2400-Dipole.png')
+plt.savefig('plot/SoTeXS-2400.png')
 # plt.show()
 
 
@@ -175,7 +174,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = rp[rp['ExitSlit.totalHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(energy,bw, label=f'es {es} um')
+    ax.plot(energy,bw, label=f'es {es} μm')
 
 ax.set_xlabel('Energy [keV]')
 ax.set_ylabel('Energy/1000/bandwidth [a.u.]')
@@ -198,7 +197,7 @@ ax.grid(which='both', axis='both')
 
 plt.suptitle('SoTeXs, 2400 l/mm blazed grating + ML')
 plt.tight_layout()
-plt.savefig('plot/PGM-2400-Dipole-PerMil.png')
+plt.savefig('plot/SoTeXS-2400-PerMil.png')
 
 
 # print('simo')
