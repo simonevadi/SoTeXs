@@ -2,8 +2,8 @@ import numpy as np
 import os
 import pandas as pd
 
-rounds_1200 = 2
-rounds_ml = 1
+rounds_1200 = 5
+rounds_ml = 5
 cpu    = 30
 nrays  = 5e5
 
