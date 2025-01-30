@@ -27,8 +27,8 @@ oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 flux = pd.read_csv(os.path.join(flux_simulation_folder, oe))
 rp = pd.read_csv(os.path.join(rp_simulation_folder, oe))
 cff_list = flux['PG.cFactor'].unique()
-flux = flux[flux['CPMU20.photonEnergy'] >= 500]
-rp = rp[rp['CPMU20.photonEnergy'] >= 500]
+# flux = flux[flux['CPMU20.photonEnergy'] >= 500]
+# rp = rp[rp['CPMU20.photonEnergy'] >= 500]
 # plotting Flux and RP
 fig, (axs) = plt.subplots(4, 2,figsize=(10,10))
 
