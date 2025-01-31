@@ -13,7 +13,6 @@ sim = Simulate(ml_rml_file_path, hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
-
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.totalHeight:SlitSize},
