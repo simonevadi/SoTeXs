@@ -47,4 +47,4 @@ sim.exports  =  [{beamline.CPMU20:['RawRaysOutgoing']},
 #sim.rml_list()
 
 #uncomment to run the simulations
-sim.run(multiprocessing=ncpu, force=False)
+sim.run(multiprocessing=ncpu, force=False, remove_round_folders=True, remove_rawrays=True)

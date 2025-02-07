@@ -2,14 +2,14 @@ import numpy as np
 import os
 import pandas as pd
 
-rounds_1200 = 2
-rounds_ml = 2
+rounds_1200 = 10
+rounds_ml = 10
 cpu    = 30
 nrays  = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy_flux = np.arange(500, 2551,10)
+hb_1200_energy_flux = np.arange(500, 2551,1)
 hb_1200_energy_rp   = np.arange(500, 2551,100)
 hb_1200_SlitSize    = np.array([0.04])
 hb_1200_grating     = np.array([1200])
@@ -17,7 +17,7 @@ hb_1200_blaze       = np.array([0.9])
 hb_1200_cff         = np.array([1.5,2.25,3,5])
 hb_1200_nrays_flux  = nrays
 hb_1200_nrays_rp    = nrays 
-hb_1200_rounds_flux = rounds_1200
+hb_1200_rounds_flux = 5
 hb_1200_rounds_rp   = 20
 hb_1200_ncpu_flux   = cpu
 hb_1200_ncpu_rp     = cpu
@@ -38,8 +38,8 @@ ml_SlitSize     = np.array([0.02, 0.05, 0.1])
 ml_grating      = np.array([2400])
 ml_nrays_flux   = nrays
 ml_nrays_rp     = nrays 
-ml_rounds_flux  = rounds_ml
-ml_rounds_rp    = rounds_ml
+ml_rounds_flux  = 5
+ml_rounds_rp    = 5
 ml_ncpu_flux    = cpu
 ml_ncpu_rp      = cpu
 
@@ -56,9 +56,9 @@ beta_file_path = os.path.join('ML_eff',
 beta_df = pd.read_csv(beta_file_path, sep='\s+', header=[0, 1])
 
 
-ml_cff = grating_df['Cff'].to_numpy().flatten()[::10]
-ml_energy_rp = grating_df['Energy'].to_numpy().flatten()[::10]
-ml_energy_flux = grating_df['Energy'].to_numpy().flatten()[::10]
+ml_cff = grating_df['Cff'].to_numpy().flatten()#[::10]
+ml_energy_rp = grating_df['Energy'].to_numpy().flatten()#[::10]
+ml_energy_flux = grating_df['Energy'].to_numpy().flatten()#[::10]
 
 
 this_file_dir      = os.path.dirname(os.path.realpath(__file__))

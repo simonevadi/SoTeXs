@@ -9,7 +9,7 @@ nrays  = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy_flux = np.arange(500, 2551,10)
+hb_1200_energy_flux = np.arange(500, 2551,1)
 hb_1200_energy_rp   = np.arange(500, 2551,100)
 hb_1200_SlitSize    = np.array([0.04])
 hb_1200_grating     = np.array([1200])
@@ -23,7 +23,6 @@ hb_1200_ncpu_flux   = cpu
 hb_1200_ncpu_rp     = cpu
 
 hb_1200_sim_name_flux = '1200_07_FLUX'
-hb_1200_sim_name_rp   = '1200_07_RP'
 hb_1200_rml_file_name = 'sotexs_1200_07'
 
 this_file_dir   = os.path.dirname(os.path.realpath(__file__))
@@ -38,8 +37,8 @@ ml_SlitSize     = np.array([0.02, 0.05, 0.1])
 ml_grating      = np.array([2400])
 ml_nrays_flux   = nrays
 ml_nrays_rp     = nrays 
-ml_rounds_flux  = rounds_ml
-ml_rounds_rp    = rounds_ml
+ml_rounds_flux  = 1
+ml_rounds_rp    = 1
 ml_ncpu_flux    = cpu
 ml_ncpu_rp      = cpu
 
@@ -56,9 +55,9 @@ beta_file_path = os.path.join('ML_eff',
 beta_df = pd.read_csv(beta_file_path, sep='\s+', header=[0, 1])
 
 
-ml_cff = grating_df['Cff'].to_numpy().flatten()[::10]
-ml_energy_rp = grating_df['Energy'].to_numpy().flatten()[::10]
-ml_energy_flux = grating_df['Energy'].to_numpy().flatten()[::10]
+ml_cff = grating_df['Cff'].to_numpy().flatten()#[::10]
+ml_energy_rp = grating_df['Energy'].to_numpy().flatten()#[::10]
+ml_energy_flux = grating_df['Energy'].to_numpy().flatten()#[::10]
 
 
 this_file_dir      = os.path.dirname(os.path.realpath(__file__))

@@ -6,13 +6,9 @@ printf "\n"
 printf "\n"
 printf "\n"
 printf "\n"
-printf $py_file 
-python simulation_1200_RP.py
-python simulation_1200_RP.py
-# find . -type d -name "round_*" -exec rm -r {} +
-
-python simulation_1200_Flux.py
-python simulation_1200_Flux.py
-# find . -type d -name "round_*" -exec rm -r {} +
+# python simulation_1200.py
+# python simulation_1200_07.py
+python simulation_2400_ML.py
+python simulation_2400_ML_07.py
 
 

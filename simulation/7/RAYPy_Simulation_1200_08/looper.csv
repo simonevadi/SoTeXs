@@ -1,4 +1,4 @@
-Simulation Number,ExitSlit.totalHeight,CPMU20.photonEnergy,PG.cFactor,PG.orderDiffraction,CPMU20.numberRays
+Simulation Number,ExitSlit.openingHeight,CPMU20.photonEnergy,PG.cFactor,PG.orderDiffraction,CPMU20.numberRays
 0,0.04,500,1.5,1,500000.0
 1,0.04,500,2.25,1,500000.0
 2,0.04,500,3.0,1,500000.0

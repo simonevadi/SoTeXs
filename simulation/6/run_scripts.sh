@@ -8,10 +8,7 @@ do
     printf "\n"
     printf "\n"
     printf $py_file 
-    python $py_file
-    python $py_file
-    python $py_file
-    find . -type d -name "round_*" -exec rm -r {} +
+
 
 
 done

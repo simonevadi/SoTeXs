@@ -9,14 +9,14 @@ from params import ml_nrays_flux as nrays, ml_rounds_flux as rounds
 from params import ml_ncpu_flux as ncpu, ml_sim_name_flux as sim_name
 from params import ml_rml_file_path, ml_cff as cff
 
-sim = Simulate(ml_rml_file_path, hide=True)
+sim = Simulate('rml/sotexs_2400_07.rml', hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
-
 # define a list of dictionaries with the parameters to scan
+print(SlitSize)
 params = [  
-            {beamline.ExitSlit.totalHeight:SlitSize},
+            {beamline.ExitSlit.openingHeight:SlitSize},
             {beamline.CPMU20.photonEnergy:energy, 
              beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
@@ -27,7 +27,7 @@ params = [
 sim.params=params
 
 # sim.simulation_folder = '/home/simone/Documents/RAYPYNG/raypyng/test'
-sim.simulation_name = sim_name
+sim.simulation_name = '2400_07'
 
 # turn off reflectivity
 # sim.reflectivity(reflectivity=True)
@@ -47,4 +47,4 @@ sim.exports  =  [{beamline.CPMU20:['RawRaysOutgoing']},
 #sim.rml_list()
 
 #uncomment to run the simulations
-sim.run(multiprocessing=ncpu, force=False, remove_round_folders=True, remove_rawrays=True)
+sim.run(multiprocessing=ncpu, force=False, remove_round_folders=False, remove_rawrays=True)
