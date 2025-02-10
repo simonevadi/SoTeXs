@@ -2,9 +2,9 @@ import numpy as np
 import os
 import pandas as pd
 
-rounds_1200 = 2
-rounds_ml = 2
-cpu    = 30
+rounds_1200 = 5
+rounds_ml = 5
+cpu    = 25
 nrays  = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
