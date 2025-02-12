@@ -180,8 +180,8 @@ focx07 = np.mean(focx07, axis=0)
 focx08 = np.array(focx08)
 focx08 = np.mean(focx08, axis=0)
 
-ax.plot(p.moving_average(energy,w*10),p.moving_average(focx07*1000,w*10), label=f'theta=0.7°' )
-ax.plot(p.moving_average(energy,w*10),p.moving_average(focx08*1000,w*10), linestyle='dashed',label=f'theta=0.8°' )
+ax.plot(p.moving_average(energy,w*1),p.moving_average(focx07*1000,w*10), label=f'theta=0.7°' )
+ax.plot(p.moving_average(energy,w*1),p.moving_average(focx08*1000,w*10), linestyle='dashed',label=f'theta=0.8°' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
