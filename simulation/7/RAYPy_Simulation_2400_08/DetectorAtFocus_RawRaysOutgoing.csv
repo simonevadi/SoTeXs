@@ -1,4 +1,4 @@
-,Simulation Number,ExitSlit.totalHeight,CPMU20.photonEnergy,PG.orderDiffraction,CPMU20.numberRays,PG.cFactor,SourcePhotonFlux,NumberRaysSurvived,PercentageRaysSurvived,PhotonEnergy,Bandwidth,HorizontalFocusFWHM,VerticalFocusFWHM,PhotonFlux,EnergyPerMilPerBw,FluxPerMilPerBwPerc,FluxPerMilPerBwAbs,AXUVCurrentAmp,GaAsPCurrentAmp
+,Simulation Number,ExitSlit.openingHeight,CPMU20.photonEnergy,PG.orderDiffraction,CPMU20.numberRays,PG.cFactor,SourcePhotonFlux,NumberRaysSurvived,PercentageRaysSurvived,PhotonEnergy,Bandwidth,HorizontalFocusFWHM,VerticalFocusFWHM,PhotonFlux,EnergyPerMilPerBw,FluxPerMilPerBwPerc,FluxPerMilPerBwAbs,AXUVCurrentAmp,GaAsPCurrentAmp
 0,0,0.02,502,2,500000.0,1.17662360156545,,9860.0,1.972,502.0,0.0388134786593923,0.0194184300666195,0.0072294926063169,,12.9336513329635,25.505160428604025,,,
 1,1,0.02,504,2,500000.0,1.17747901516844,,9635.0,1.927,504.0,0.0432357703439834,0.0195507302401784,0.0077120905375565,,11.657014457940276,22.463066860450912,,,
 2,2,0.02,506,2,500000.0,1.17837189466193,,9971.0,1.9942,506.0,0.0394125345528664,0.0189022797245366,0.0069139288919618,,12.838555189118113,25.60264675813934,,,

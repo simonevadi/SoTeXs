@@ -10,4 +10,5 @@
 | 5 | adapted the distance between the optical elements  |    The beamline is still too long, m1 is at 12.5 meters and not 12.00 as shown in the floorplan         |
 | 6 | shortened the beamline 1.5 meters between m3 and exit slit  |  Performances still seem reasonable    |
 | 7 | comparison 0.7, 0.8 degrees, m1 600 vs 400 mm long  |      |
+| 8 | comparison 0.7, 0.8 degrees, beamline 1m shorter  |      |
 

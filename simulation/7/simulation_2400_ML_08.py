@@ -16,7 +16,7 @@ beamline = sim.rml.beamline
 # define a list of dictionaries with the parameters to scan
 print(SlitSize)
 params = [  
-            {beamline.ExitSlit.totalHeight:SlitSize},
+            {beamline.ExitSlit.openingHeight:SlitSize},
             {beamline.CPMU20.photonEnergy:energy, 
              beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
