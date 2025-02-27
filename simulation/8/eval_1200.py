@@ -26,8 +26,9 @@ flux_simulation_folder08 = 'RAYPy_Simulation_1200_08'
 oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 flux07 = pd.read_csv(os.path.join(flux_simulation_folder07, oe))
 flux08 = pd.read_csv(os.path.join(flux_simulation_folder08, oe))
-cff_list = flux07['PG.cFactor'].unique()
 
+# cff_list = flux07['PG.cFactor'].unique()
+cff_list = [2.25]
 
 
 
@@ -140,17 +141,18 @@ for ind, cff in enumerate(cff_list):
     filtered_rp = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'ExitSlit {cff}, theta=0.7°' )
+    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'cff {cff}, theta=0.7°' )
 
     filtered_rp = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'ExitSlit {cff}, theta=0.8°', linestyle='dashed' )
+    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'cff {cff}, theta=0.8°', linestyle='dashed' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('RP [a.u.]')
 ax.set_title('Resolving Power')
 ax.grid(which='both', axis='both')
+ax.set_ylim(4500,25000)
 ax.axhline(y=6000, color='k', linestyle='--', label='RP 6000')
 ax.legend()
 

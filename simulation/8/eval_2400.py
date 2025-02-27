@@ -28,7 +28,7 @@ flux07 = pd.read_csv(os.path.join(flux_simulation_folder07, oe))
 flux08 = pd.read_csv(os.path.join(flux_simulation_folder08, oe))
 cff_list = flux07['PG.cFactor'].unique()
 exit_slit_list = flux07['ExitSlit.openingHeight'].unique()
-
+exit_slit_list = [0.02]
 # plotting Flux and RP
 fig, (axs) = plt.subplots(4, 2,figsize=(12,12))
 
@@ -180,8 +180,8 @@ focx07 = np.mean(focx07, axis=0)
 focx08 = np.array(focx08)
 focx08 = np.mean(focx08, axis=0)
 
-ax.plot(p.moving_average(energy,w*1),p.moving_average(focx07*1000,w*10), label=f'theta=0.7°' )
-ax.plot(p.moving_average(energy,w*1),p.moving_average(focx08*1000,w*10), linestyle='dashed',label=f'theta=0.8°' )
+ax.plot(p.moving_average(energy,w*1),p.moving_average(focx07*1000,w*1), label=f'theta=0.7°' )
+ax.plot(p.moving_average(energy,w*1),p.moving_average(focx08*1000,w*1), linestyle='dashed',label=f'theta=0.8°' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')

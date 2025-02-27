@@ -2,8 +2,8 @@ from raypyng import Simulate
 
 # define the values of the parameters to scan 
 from params import hb_1200_order as order,  hb_1200_energy_flux as energy
-from params import hb_1200_SlitSize as SlitSize, hb_1200_grating as grating 
-from params import hb_1200_blaze as blaze, hb_1200_cff as cff
+from params import hb_1200_SlitSize as SlitSize
+from params import hb_1200_cff as cff
 from params import hb_1200_nrays_flux as nrays, hb_1200_rounds_flux as rounds
 from params import hb_1200_ncpu_flux as ncpu, hb_1200_sim_name_flux as sim_name
 from params import hb_1200_file_path
