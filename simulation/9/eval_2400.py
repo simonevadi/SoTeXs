@@ -113,16 +113,17 @@ ax2.set_ylim(10e9, 10e13)
 
 # BANDWIDTH
 ax = axs[2,0]
+window = 10
 for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w*5),p.moving_average(bw,w*5),color=colors[ind], label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window),color=colors[ind], label=f'es {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w*5),p.moving_average(bw,w*5),color=colors[ind], label=f'es {es} μm', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window),color=colors[ind], label=f'es {es} μm', linestyle='dashed' )
     
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
@@ -133,7 +134,6 @@ ax.grid(which='both', axis='both')
 energy_threshold = np.arange(energy.iloc[0], energy.iloc[-1])
 threshold_transmission = energy_threshold/6000
 ax.plot(energy_threshold, threshold_transmission, linestyle='dashed', color='black')
-    
 # ax.legend()
 
 
@@ -143,12 +143,12 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w*5),p.moving_average(energy/bw,w*5), color=colors[ind], label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), color=colors[ind], label=f'es {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w*5),p.moving_average(energy/bw,w*5), color=colors[ind], linestyle='dashed', label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), color=colors[ind], linestyle='dashed', label=f'es {es} μm' )
 
 
 ax.set_xlabel('Energy [eV]')
