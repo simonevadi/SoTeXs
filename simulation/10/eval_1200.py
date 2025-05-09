@@ -15,7 +15,7 @@ from params import undulator_spectra
 
 from raypyng.postprocessing import PostProcessAnalyzed
 p = PostProcessAnalyzed()
-w = 20
+window = 500
 
 flux_simulation_folder07 = 'RAYPy_Simulation_1200_07' 
 flux_simulation_folder08 = 'RAYPy_Simulation_1200_08' 
@@ -30,7 +30,7 @@ flux08 = pd.read_csv(os.path.join(flux_simulation_folder08, oe))
 # cff_list = flux07['PG.cFactor'].unique()
 cff_list = [2.25]
 
-
+energy_limits = (450,2300)
 
 # plotting Flux and RP
 fig, (axs) = plt.subplots(4, 2,figsize=(12,12))
@@ -59,7 +59,7 @@ IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40,
                         bLayer=Cr, bThickness=60, 
                         nPairs=1, substrate=Ir)
 IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
-ax2.plot(E, IrCrB4C, label='IrCrB4C')
+ax2.plot(E, IrCrB4C, label=f'IrCrB4C at {theta}°')
 
 theta = 0.8
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
@@ -78,7 +78,7 @@ ax2.set_ylabel('Reflectivity [a.u.]')
 ax2.set_title(f'Mirror Coating Reflectivity ')
 ax2.legend()
 
-
+ax2.set_xlim(energy_limits)
 
 # AVAILABLE/ABS FLUX 
 ax = axs[1,0]
@@ -88,26 +88,29 @@ for ind, cff in enumerate(cff_list):
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'cff {cff}')
-    ax2.plot(energy,abs_flux, label=f'cff {cff}')
+    ax.plot(energy,perc_flux, label=f'theta={0.7}°')
+    ax2.plot(energy,abs_flux, label=f'theta={0.7}°')
 
     filtered_flux = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'cff {cff}', linestyle='dashed')
-    ax2.plot(energy,abs_flux, label=f'cff {cff}', linestyle='dashed')
+    ax.plot(energy,perc_flux, label=f'theta={0.8}°', linestyle='dashed')
+    ax2.plot(energy,abs_flux, label=f'theta={0.8}°', linestyle='dashed')
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
 ax.set_title('Available Flux (in percent)')
 ax.grid(which='both', axis='both')
+ax.set_xlim(energy_limits)
 ax.legend()
 
 ax2.set_title('Available Flux')
 ax2.set_xlabel(r'Energy [eV]')
 ax.grid(which='both', axis='both')
 ax2.set_ylabel('Flux [ph/s/tbw]')
+ax2.set_yscale('log')
+ax2.set_xlim(energy_limits)
 
 
 # BANDWIDTH
@@ -116,12 +119,12 @@ for ind, cff in enumerate(cff_list):
     filtered_rp = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw, w), label=f'cff {cff}' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window), label=f'cff {cff}' )
 
     filtered_rp = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw, w), label=f'cff {cff}', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window), label=f'cff {cff}', linestyle='dashed' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
@@ -131,7 +134,8 @@ ax.grid(which='both', axis='both')
 energy_threshold = np.arange(energy.iloc[0], energy.iloc[-1])
 threshold_transmission = energy_threshold/6000
 ax.plot(energy_threshold, threshold_transmission, linestyle='dashed', color='black')
-    
+ax.set_xlim(energy_limits)
+  
 # ax.legend()
 
 
@@ -141,20 +145,21 @@ for ind, cff in enumerate(cff_list):
     filtered_rp = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'cff {cff}, theta=0.7°' )
+    ax.plot(p.moving_average(energy, window),p.moving_average(energy/bw, window) )
 
     filtered_rp = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy, w),p.moving_average(energy/bw, w), label=f'cff {cff}, theta=0.8°', linestyle='dashed' )
+    ax.plot(p.moving_average(energy, window),p.moving_average(energy/bw, window))
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('RP [a.u.]')
 ax.set_title('Resolving Power')
 ax.grid(which='both', axis='both')
-ax.set_ylim(4500,25000)
+# ax.set_ylim(4500,25000)
 ax.axhline(y=6000, color='k', linestyle='--', label='RP 6000')
-ax.legend()
+# ax.legend()
+ax.set_xlim(energy_limits)
 
 # HORIZONTAL FOCUS
 ax = axs[3,0]
@@ -178,13 +183,14 @@ focx07 = np.mean(focx07, axis=0)
 focx08 = np.array(focx08)
 focx08 = np.mean(focx08, axis=0)
 
-ax.plot(p.moving_average(energy07,w),p.moving_average(focx07*1000,w), label=f'0.7°' )
-ax.plot(p.moving_average(energy08,w),p.moving_average(focx08*1000,w), label=f'0.8°', linestyle='dashed' )
+ax.plot(p.moving_average(energy07,window),p.moving_average(focx07*1000,window), label=f'0.7°' )
+ax.plot(p.moving_average(energy08,window),p.moving_average(focx08*1000,window), label=f'0.8°', linestyle='dashed' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
 ax.set_title('Horizontal focus')
 ax.legend()
+ax.set_xlim(energy_limits)
 
 # VERTICAL FOCUS
 ax = axs[3,1]
@@ -192,18 +198,19 @@ for ind, cff in enumerate(cff_list):
     filtered_rp = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {cff}, theta=0.7°' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {cff}, theta=0.7°' )
 
     filtered_rp = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {cff}, theta=0.8°', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {cff}, theta=0.8°', linestyle='dashed' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
 ax.set_title('Vertical focus')
+ax.set_xlim(energy_limits)
 
-plt.suptitle('SoTeXs, 1200 l/mm blazed grating')
+plt.suptitle(f'SoTeXs, 1200 l/mm blazed grating, cff=2.25, Exit Slit = 30 µm')
 plt.tight_layout()
 plt.savefig('plot/SoTeXS-1200.png')
 # plt.show()
@@ -218,12 +225,12 @@ for ind, cff in enumerate(cff_list):
     filtered_rp = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w), label=f'cff {cff}, theta 0.7°')
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'cff {cff}, theta 0.7°')
 
     filtered_rp = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w), label=f'cff {cff}, theta 0.8°')
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'cff {cff}, theta 0.8°')
 
 ax.set_xlabel('Energy [keV]')
 ax.set_ylim(0,30)
@@ -238,16 +245,16 @@ for ind, cff in enumerate(cff_list):
     filtered_flux = flux07[flux07['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     permil = filtered_flux['FluxPerMilPerBwPerc']
-    ax.plot(p.moving_average(energy,w),p.moving_average(permil,w))
+    ax.plot(p.moving_average(energy,window),p.moving_average(permil,window))
 
     filtered_flux = flux08[flux08['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     permil = filtered_flux['FluxPerMilPerBwPerc']
-    ax.plot(p.moving_average(energy,w),p.moving_average(permil,w))
+    ax.plot(p.moving_average(energy,window),p.moving_average(permil,window))
 
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Flux [ph/s/tbw]')
-ax.set_title('Transmission / Per MIl bandwidth')
+ax.set_title('Transmission / Per Mil bandwidth')
 ax.grid(which='both', axis='both')
 
 plt.suptitle('SoTeXs, 1200 l/mm blazed grating')

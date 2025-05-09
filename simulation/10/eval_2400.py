@@ -85,16 +85,16 @@ for ind, es in enumerate(exit_slit_list):
     perc_flux = filtered_flux['PercentageRaysSurvived']
     perc_flux = ML_eff_new(energy, perc_flux)
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux,color=colors[ind], label=f'es {es} μm, theta=0.7')
-    ax2.plot(energy,abs_flux,color=colors[ind], label=f'es {es} μm, theta=0.7')
+    ax.plot(energy,perc_flux, label=f'theta=0.7')
+    ax2.plot(energy,abs_flux, label=f'theta=0.7')
 
     filtered_flux = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
     perc_flux = ML_eff_new(energy, perc_flux)
     abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux,color=colors[ind], label=f'es {es} μm, theta=0.8°', linestyle='dashed')
-    ax2.plot(energy,abs_flux,color=colors[ind], label=f'es {es} μm, theta=0.8°', linestyle='dashed')
+    ax.plot(energy,perc_flux, label=f'theta=0.8°')
+    ax2.plot(energy,abs_flux, label=f'theta=0.8°')
              
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
@@ -106,8 +106,8 @@ ax2.set_title('Available Flux')
 ax2.set_xlabel(r'Energy [eV]')
 ax.grid(which='both', axis='both')
 ax2.set_ylabel('Flux [ph/s/tbw]')
-ax2.set_yscale('log')
-ax2.set_ylim(10e9, 10e13)
+# ax2.set_yscale('log')
+# ax2.set_ylim(10e9, 10e13)
 
 
 
@@ -118,12 +118,12 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window),color=colors[ind], label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'es {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window),color=colors[ind], label=f'es {es} μm', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'es {es} μm' )
     
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
@@ -143,12 +143,12 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), color=colors[ind], label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), label=f'es {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), color=colors[ind], linestyle='dashed', label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), label=f'es {es} μm' )
 
 
 ax.set_xlabel('Energy [eV]')
@@ -194,18 +194,18 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), color=colors[ind], label=f'ExitSlit {es} μm' )
+    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), color=colors[ind], linestyle='dashed', label=f'ExitSlit {es} μm' )
+    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
 ax.set_title('Vertical focus')
 
-plt.suptitle('SoTeXs, 2400 l/mm blazed grating + ML')
+plt.suptitle('SoTeXs, 2400 l/mm blazed grating + ML, Exit Slit = 20 µm')
 plt.tight_layout()
 plt.savefig('plot/SoTeXS-2400.png')
 
@@ -219,12 +219,12 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w),color=colors[ind], label=f'es {es} μm, theta=0.7°')
+    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w),color=colors[ind], label=f'es {20} μm, theta=0.7°')
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['EnergyPerMilPerBw']
-    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w), linestyle='dashed', color=colors[ind], label=f'es {es} μm, theta=0.8°')
+    ax.plot(p.moving_average(energy,w),p.moving_average(bw,w), linestyle='dashed', color=colors[ind], label=f'es {20} μm, theta=0.8°')
 
 ax.set_xlabel('Energy [keV]')
 ax.set_ylabel('Energy/1000/bandwidth [a.u.]')
