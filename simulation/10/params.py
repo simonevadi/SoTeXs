@@ -9,7 +9,7 @@ nrays  = 3e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy_flux = np.arange(500, 2551,0.2)
+hb_1200_energy_flux = np.arange(500, 2550.1,0.2)
 hb_1200_SlitSize    = np.array([0.03])
 hb_1200_cff         = np.array([1.5,2.25,3,5])
 hb_1200_nrays_flux  = nrays
