@@ -69,7 +69,7 @@ IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40,
                         bLayer=Cr, bThickness=60, 
                         nPairs=1, substrate=Ir)
 IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
-ax2.plot(E, IrCrB4C, label='IrCrB4C')
+ax2.plot(E, IrCrB4C, label=f'IrCrB4C at {theta}°')
 
 theta = 0.8
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
@@ -299,7 +299,7 @@ ax.set_title('Vertical focus')
 
 plt.suptitle('SoTeXs')
 plt.tight_layout()
-plt.savefig('plot/SoTeXS-compare.png')
+plt.savefig('plot/SoTeXS-compare-07-08.png')
 
 
 
