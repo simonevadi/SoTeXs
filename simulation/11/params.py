@@ -4,12 +4,12 @@ import pandas as pd
 
 rounds_1200 = 1
 rounds_ml = 1
-cpu    = 5
-nrays  = 3e4
+cpu    = 30
+nrays  = 1e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy_flux = np.arange(500, 2550.1,10)
+hb_1200_energy_flux = np.arange(500, 2550.1,1)
 hb_1200_SlitSize    = np.array([0.03])
 hb_1200_cff         = np.array([1.5,2.25,3,5])
 hb_1200_nrays_flux  = nrays
@@ -54,7 +54,35 @@ ml_energy_flux = grating_df['Energy'].to_numpy().flatten()[::10]
 this_file_dir      = os.path.dirname(os.path.realpath(__file__))
 ml_rml_file_path   = os.path.join('rml/'+ml_rml_file_name+'.rml')
 
+grating = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat',
+                      sep='\s+')
+mirror = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat',
+                      sep='\s+')
 
+# Extract efficiency from Andrey's data 
+common_energy = None
+
+if grating['Energy'].equals(mirror['Energy']):
+    # If energy columns match, directly multiply
+    efficiency = pd.DataFrame({
+        'Energy[eV]': grating['Energy'],
+        'Efficiency': grating['Efficiency(GR)'] * mirror['Efficiency(PM)']
+    })
+else:
+    # Interpolate to a common energy range
+    min_energy = max(grating['Energy'].min(), mirror['Energy'].min())
+    max_energy = min(grating['Energy'].max(), mirror['Energy'].max())
+    common_energy = np.linspace(min_energy, max_energy, num=1000)  # Define a common range
+
+    grating_eff = np.interp(common_energy, grating['Energy'], grating['Efficiency(GR)'])
+    mirror_eff = np.interp(common_energy, mirror['Energy'], mirror['Efficiency(PM)'])
+
+    # Create a new DataFrame with interpolated values
+    efficiency = pd.DataFrame({
+        'Energy[eV]': common_energy,
+        'Efficiency': grating_eff * mirror_eff
+    })
+    
 # params only for evaluation
 beamline_name = 'SoTeXS'
 # define undulator file

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 
-pgrep -f 'simulation_' | xargs kill
-printf "\n"
-printf "\n"
+
 # python simulation_1200.py
 # printf "\n"
 # printf "\n"

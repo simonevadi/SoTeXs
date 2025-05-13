@@ -96,17 +96,15 @@ for ind, es in enumerate(exit_slit_list):
     filtered_flux = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
-    perc_flux = ML_eff_new(energy, perc_flux)
-    abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'2400,θ=0.7,es=20µm')
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'2400,θ=0.7')
     ax2.plot(energy,abs_flux)
 
     filtered_flux = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
-    perc_flux = ML_eff_new(energy, perc_flux)
-    abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'2400,θ=0.8°,es=20µm')
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'2400,θ=0.8°')
     ax2.plot(energy,abs_flux)
 
     # 1200
@@ -114,15 +112,15 @@ for ind, es in enumerate(exit_slit_list):
     filtered_flux = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
-    abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'1200,θ={0.7}°,es=30µm')
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'1200,θ={0.7}°')
     ax2.plot(energy,abs_flux)
 
     filtered_flux = flux08_1200[flux08_1200['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
-    abs_flux = scale_undulator_flux(energy, perc_flux, undulator_spectra)
-    ax.plot(energy,perc_flux, label=f'1200,θ={0.8}°,es=30µm')
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'1200,θ={0.8}°')
     ax2.plot(energy,abs_flux)
              
 ax.set_xlabel(r'Energy [eV]')
@@ -130,12 +128,12 @@ ax.set_ylabel('Transmission [%]')
 ax.set_title('Available Flux (in percent)')
 ax.grid(which='both', axis='both')
 ax.legend()
-# ax.set_yscale('log')
+ax.set_yscale('log')
 ax2.set_title('Available Flux')
 ax2.set_xlabel(r'Energy [eV]')
 ax.grid(which='both', axis='both')
 ax2.set_ylabel('Flux [ph/s/tbw]')
-# ax2.set_yscale('log')
+ax2.set_yscale('log')
 # ax2.set_ylim(10e9, 10e13)
 
 
@@ -255,7 +253,7 @@ window = 20
 ax.plot(p.moving_average(energy,window*1),p.moving_average(focx07*1000,window*1) )
 ax.plot(p.moving_average(energy,window*1),p.moving_average(focx08*1000,window*1) )
 # 1200
-window=200
+window=20
 ax.plot(p.moving_average(energy07_1200,window),p.moving_average(focx07_1200*1000,window))
 ax.plot(p.moving_average(energy08_1200,window),p.moving_average(focx08_1200*1000,window) )
 
@@ -281,7 +279,7 @@ for ind, es in enumerate(exit_slit_list):
     ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
 
     # 1200
-    window = 200
+    window = 20
     filtered_rp = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
@@ -290,7 +288,7 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux08_1200[flux08_1200['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {cff}, theta=0.8°', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {cff}, theta=0.8°')
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Focus Size [um]')
@@ -300,7 +298,7 @@ ax.set_ylim(6, 14)
 
 
 
-plt.suptitle('SoTeXs')
+plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
 plt.savefig('plot/SoTeXS-compare-07-08.png')
 
