@@ -33,6 +33,7 @@ def scale_undulator_flux(ray_energy, ray_flux, undulator_spectra):
     Returns:
         absolute_flux (np.array): the absolute flux
     """    
+    breakpoint()
     en_undulator    = undulator_spectra[:,0]
     flux_undulator  = undulator_spectra[:,3]
     und_interp_flux = np.interp(ray_energy, en_undulator, flux_undulator) 

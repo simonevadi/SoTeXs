@@ -82,7 +82,6 @@ else:
         'Energy[eV]': common_energy,
         'Efficiency': grating_eff * mirror_eff
     })
-    
 # params only for evaluation
 beamline_name = 'SoTeXS'
 # define undulator file

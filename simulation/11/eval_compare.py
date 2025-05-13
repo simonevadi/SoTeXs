@@ -128,12 +128,12 @@ ax.set_ylabel('Transmission [%]')
 ax.set_title('Available Flux (in percent)')
 ax.grid(which='both', axis='both')
 ax.legend()
-ax.set_yscale('log')
+# ax.set_yscale('log')
 ax2.set_title('Available Flux')
 ax2.set_xlabel(r'Energy [eV]')
 ax.grid(which='both', axis='both')
 ax2.set_ylabel('Flux [ph/s/tbw]')
-ax2.set_yscale('log')
+# ax2.set_yscale('log')
 # ax2.set_ylim(10e9, 10e13)
 
 
@@ -297,9 +297,9 @@ ax.set_ylim(6, 14)
 
 
 
-
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
+plt.show()
 plt.savefig('plot/SoTeXS-compare-07-08.png')
 
 
