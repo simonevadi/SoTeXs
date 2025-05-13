@@ -302,7 +302,6 @@ ax.set_ylim(6, 14)
 
 plt.suptitle('SoTeXs')
 plt.tight_layout()
-# plt.show()
 plt.savefig('plot/SoTeXS-compare-07-08.png')
 
 
