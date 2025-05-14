@@ -45,10 +45,9 @@ undulator_table = pd.read_csv('undulator/CPMU20.csv')
 sim.undulator_table = undulator_table
 
 sim.efficiency = efficiency
-breakpoint()
 
 # create the rml files
 #sim.rml_list()
 
 #uncomment to run the simulations
-# sim.run(multiprocessing=ncpu, force=False, remove_round_folders=False, remove_rawrays=True)
+sim.run(multiprocessing=ncpu, force=False, remove_round_folders=False, remove_rawrays=True)

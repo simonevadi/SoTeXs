@@ -1,11 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 
 # path to xrt:
 import os, sys; sys.path.append(os.path.join('..', '..', '..'))  # analysis:ignore
 import xrt.backends.raycing.materials as rm
-from helper_lib import get_reflectivity, scale_undulator_flux
+from helper_lib import get_reflectivity
 
 
 
@@ -13,8 +12,6 @@ from helper_lib import get_reflectivity, scale_undulator_flux
 
 # plotting Flux and RP
 fig, (axs) = plt.subplots(1, 1,figsize=(20,5))
-
-
 
 # MIRROR COATING
 ax2=axs
@@ -57,4 +54,3 @@ plt.tight_layout()
 plt.savefig('plot/SoTeXS-mirror_reflectivity.png')
 
 
-# print('simo')

@@ -3,15 +3,15 @@ import os
 import pandas as pd
 
 rounds_1200 = 1
-rounds_ml = 1
+rounds_ml = 10
 cpu    = 30
-nrays  = 1e5
+nrays  = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy_flux = np.arange(500, 2550.1,1)
+hb_1200_energy_flux = np.arange(500, 2550.1,0.2)
 hb_1200_SlitSize    = np.array([0.03])
-hb_1200_cff         = np.array([1.5,2.25,3,5])
+hb_1200_cff         = np.array([2.25])
 hb_1200_nrays_flux  = nrays
 hb_1200_rounds_flux = rounds_1200
 hb_1200_ncpu_flux   = cpu

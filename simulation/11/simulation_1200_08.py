@@ -40,8 +40,7 @@ sim.repeat = rounds
 sim.analyze = False # let RAY-UI analyze the results
 sim.raypyng_analysis = True # let RAY-UI analyze the results
 ## This must be a list of dictionaries
-sim.exports  =  [{beamline.CPMU20:['RawRaysOutgoing']},
-                 {beamline.DetectorAtFocus:['RawRaysOutgoing']}]
+sim.exports  =  [{beamline.DetectorAtFocus:['RawRaysOutgoing']}]
 
 undulator_table = pd.read_csv('undulator/CPMU20.csv')
 sim.undulator_table = undulator_table

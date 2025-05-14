@@ -5,13 +5,11 @@ import pandas as pd
 # path to xrt:
 import os, sys; sys.path.append(os.path.join('..', '..', '..'))  # analysis:ignore
 import xrt.backends.raycing.materials as rm
-from helper_lib import get_reflectivity, scale_undulator_flux
+from helper_lib import get_reflectivity
 
 
 # file/folder/ml index definition
-from params import ml_sim_name_rp, ml_sim_name_flux
 from params import undulator_spectra
-from multilayer_helper import ML_eff_new
 
 from raypyng.postprocessing import PostProcessAnalyzed
 p = PostProcessAnalyzed()
@@ -108,20 +106,22 @@ for ind, es in enumerate(exit_slit_list):
     ax2.plot(energy,abs_flux)
 
     # 1200
+    window = 20
+    
     cff = 2.25
     filtered_flux = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
     abs_flux = filtered_flux['PhotonFlux1']
-    ax.plot(energy,perc_flux, label=f'1200,θ={0.7}°')
-    ax2.plot(energy,abs_flux)
+    ax.plot(p.moving_average(energy, window),p.moving_average(perc_flux, window), label=f'1200,θ={0.7}°')
+    ax2.plot(p.moving_average(energy, window),p.moving_average(abs_flux, window))
 
     filtered_flux = flux08_1200[flux08_1200['PG.cFactor'] == cff]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
     abs_flux = filtered_flux['PhotonFlux1']
-    ax.plot(energy,perc_flux, label=f'1200,θ={0.8}°')
-    ax2.plot(energy,abs_flux)
+    ax.plot(p.moving_average(energy, window),p.moving_average(perc_flux, window), label=f'1200,θ={0.8}°')
+    ax2.plot(p.moving_average(energy, window),p.moving_average(abs_flux, window))
              
 ax.set_xlabel(r'Energy [eV]')
 ax.set_ylabel('Transmission [%]')
@@ -299,7 +299,7 @@ ax.set_ylim(6, 14)
 
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-plt.show()
+# plt.show()
 plt.savefig('plot/SoTeXS-compare-07-08.png')
 
 
