@@ -177,7 +177,7 @@ ax.plot(energy_threshold, threshold_transmission, linestyle='dashed', color='bla
 
 # RESOLVING POWER
 ax = axs[2,1]
-window=1
+window=20
 for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
@@ -253,7 +253,7 @@ window = 20
 ax.plot(p.moving_average(energy,window*1),p.moving_average(focx07*1000,window*1) )
 ax.plot(p.moving_average(energy,window*1),p.moving_average(focx08*1000,window*1) )
 # 1200
-window=20
+window=100
 ax.plot(p.moving_average(energy07_1200,window),p.moving_average(focx07_1200*1000,window))
 ax.plot(p.moving_average(energy08_1200,window),p.moving_average(focx08_1200*1000,window) )
 
@@ -279,7 +279,7 @@ for ind, es in enumerate(exit_slit_list):
     ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
 
     # 1200
-    window = 20
+    window = 100
     filtered_rp = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
