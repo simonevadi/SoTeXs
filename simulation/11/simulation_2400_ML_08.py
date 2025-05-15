@@ -3,12 +3,13 @@ import pandas as pd
 from raypyng import Simulate
 
 # define the values of the parameters to scan 
-from params import ml_order as order,  ml_energy_flux as energy
+from params import ml_order as order,  ml_energy as energy
 from params import ml_SlitSize as SlitSize
-from params import ml_nrays_flux as nrays, ml_rounds_flux as rounds
-from params import ml_ncpu_flux as ncpu
+from params import ml_nrays as nrays, rounds_ml as rounds
+from params import ncpu
 from params import ml_cff as cff
 from params import efficiency
+
 sim = Simulate('rml/sotexs_2400.rml', hide=True)
 
 rml=sim.rml

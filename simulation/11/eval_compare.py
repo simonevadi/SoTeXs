@@ -13,7 +13,6 @@ from params import undulator_spectra
 
 from raypyng.postprocessing import PostProcessAnalyzed
 p = PostProcessAnalyzed()
-w = 20
 
 # 1200 l/mm grating
 flux_simulation_folder07 = 'RAYPy_Simulation_1200_07' 
@@ -40,18 +39,10 @@ flux08 = flux08[flux08['CPMU20.photonEnergy'] < 5000]
 cff_list = flux07['PG.cFactor'].unique()
 exit_slit_list = flux07['ExitSlit.openingHeight'].unique()
 exit_slit_list = [0.03]
-# plotting Flux and RP
+
+
+# plotting beamline
 fig, (axs) = plt.subplots(4, 2,figsize=(12,12))
-
-# text
-ax = axs[0,1]
-ax.plot(undulator_spectra[:,0], undulator_spectra[:,3])
-
-ax.set_title('CPMU20 Flux')
-ax.grid(which='both', axis='both')
-ax.set_ylabel('Flux [ph/s/0.1%bw]')
-ax.set_xlabel('Energy [eV]')
-
 
 # MIRROR COATING
 ax2=axs[0,0]
@@ -59,6 +50,7 @@ de = 38.9579-30.0000
 table = 'Henke'
 E = np.arange(500, 5001, de)
 
+# 0.7 degrees
 theta = 0.7
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
@@ -69,6 +61,7 @@ IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40,
 IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
 ax2.plot(E, IrCrB4C, label=f'IrCrB4C at {theta}°')
 
+# 0.8 degrees
 theta = 0.8
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
@@ -87,10 +80,20 @@ ax2.set_title(f'Mirror Coating Reflectivity ')
 ax2.legend()
 
 
+# Undulator Flux
+ax = axs[0,1]
+ax.plot(undulator_spectra[:,0], undulator_spectra[:,3])
+
+ax.set_title('CPMU20 Flux')
+ax.grid(which='both', axis='both')
+ax.set_ylabel('Flux [ph/s/0.1%bw]')
+ax.set_xlabel('Energy [eV]')
+
 # AVAILABLE/ABS FLUX 
 ax = axs[1,0]
 ax2 = axs[1,1]
 for ind, es in enumerate(exit_slit_list):
+    #2400
     filtered_flux = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_flux['CPMU20.photonEnergy']
     perc_flux = filtered_flux['PercentageRaysSurvived']
@@ -142,26 +145,27 @@ ax2.set_ylabel('Flux [ph/s/tbw]')
 ax = axs[2,0]
 window = 10
 for ind, es in enumerate(exit_slit_list):
+    # 2400
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window))
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window), label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw,window))
 
     # 1200
     filtered_rp = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window), label=f'cff {cff}' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window) )
 
     filtered_rp = flux08_1200[flux08_1200['PG.cFactor'] == cff]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window), label=f'cff {cff}', linestyle='dashed' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(bw, window))
 
 ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('Transmitted Bandwidth [eV]')
@@ -171,23 +175,24 @@ ax.grid(which='both', axis='both')
 # Calculate the line as 6000 divided by the energy values
 energy_threshold = np.arange(energy.iloc[0], 6000)
 threshold_transmission = energy_threshold/6000
-ax.plot(energy_threshold, threshold_transmission, linestyle='dashed', color='black')
-# ax.legend()
+ax.plot(energy_threshold, threshold_transmission, linestyle='dashed', color='black', label='tbw at RP=6000')
+ax.legend()
 
 
 # RESOLVING POWER
 ax = axs[2,1]
 window=20
 for ind, es in enumerate(exit_slit_list):
+    # 2400
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window))
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     bw = filtered_rp['Bandwidth']
-    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window), label=f'es {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(energy/bw,window))
     
     # 1200
     window = 200
@@ -206,8 +211,8 @@ ax.set_xlabel('Energy [eV]')
 ax.set_ylabel('RP [a.u.]')
 ax.set_title('Resolving Power')
 ax.grid(which='both', axis='both')
-ax.axhline(y=6000, color='k', linestyle='--', label='RP 6000')
-# ax.legend()
+ax.axhline(y=6000, color='k', linestyle='--', label='RP=6000')
+ax.legend()
 
 # HORIZONTAL FOCUS
 ax = axs[3,0]
@@ -219,6 +224,7 @@ focx08_1200 = []
 
 # Loop through each slit size in the 'SlitSize' list
 for ind, es in enumerate(exit_slit_list):
+    #2400
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focx07.append(filtered_rp['HorizontalFocusFWHM'])
@@ -227,7 +233,7 @@ for ind, es in enumerate(exit_slit_list):
     energy = filtered_rp['CPMU20.photonEnergy']
     focx08.append(filtered_rp['HorizontalFocusFWHM'])
 
-    # # 1200
+    # 1200
     filtered_rp07 = flux07_1200[flux07_1200['PG.cFactor'] == cff]
     energy07_1200 = filtered_rp07['CPMU20.photonEnergy']
     focx07_1200.append(filtered_rp07['HorizontalFocusFWHM'])
@@ -236,7 +242,8 @@ for ind, es in enumerate(exit_slit_list):
     energy08_1200 = filtered_rp08['CPMU20.photonEnergy']
     focx08_1200.append(filtered_rp08['HorizontalFocusFWHM'])
 
-# Convert 'focx_plot' to a numpy array for element-wise operations
+
+#2400 
 focx07 = np.array(focx07)
 focx07 = np.mean(focx07, axis=0)
 focx08 = np.array(focx08)
@@ -271,12 +278,12 @@ for ind, es in enumerate(exit_slit_list):
     filtered_rp = flux07[flux07['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {es} μm' )
 
     filtered_rp = flux08[flux08['ExitSlit.openingHeight'] == es]
     energy = filtered_rp['CPMU20.photonEnergy']
     focy = filtered_rp['VerticalFocusFWHM']
-    ax.plot(p.moving_average(energy,w),p.moving_average(focy*1000,w), label=f'ExitSlit {es} μm' )
+    ax.plot(p.moving_average(energy,window),p.moving_average(focy*1000,window), label=f'ExitSlit {es} μm' )
 
     # 1200
     window = 100
@@ -299,9 +306,40 @@ ax.set_ylim(6, 14)
 
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-# plt.show()
 plt.savefig('plot/SoTeXS-compare-07-08.png')
+plt.close()
 
+# plotting efficiencies only 2400
+fig, (axs) = plt.subplots(2, 1,figsize=(12,12))
+ax = axs[0]
+for ind, es in enumerate(exit_slit_list):
+    #2400
+    filtered_flux = flux07[flux07['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    perc_flux = filtered_flux['PercentageRaysSurvived']
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'2400,θ=0.7')
 
+    filtered_flux = flux08[flux08['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    perc_flux = filtered_flux['PercentageRaysSurvived']
+    abs_flux = filtered_flux['PhotonFlux1']
+    ax.plot(energy,perc_flux, label=f'2400,θ=0.8°')
 
+ax.set_xlabel(r'Energy [eV]')
+ax.set_ylabel('Transmission [%]')
+ax.set_title('Available Flux (in percent)')
+ax.grid(which='both', axis='both')
+ax.legend()
 
+from params import efficiency
+ax = axs[1]
+ax.plot(efficiency['Energy[eV]'],efficiency['Efficiency'], label=f'ML PGM efficiency')
+ax.set_xlabel(r'Energy [eV]')
+ax.set_ylabel('Transmission [%]')
+ax.set_title('Multilyer Coated PGM efficiency')
+ax.grid(which='both', axis='both')
+ax.legend()
+plt.suptitle('SoTeXS, ES=30 µm')
+plt.tight_layout()
+plt.savefig('plot/SoTeXS-compare-07-08_multilayer_efficiency.png')
