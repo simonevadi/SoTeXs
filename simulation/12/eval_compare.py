@@ -137,7 +137,7 @@ ax.legend()
 ax2.set_title('Available Flux')
 ax2.set_xlabel(r'Energy [eV]')
 ax.grid(which='both', axis='both')
-ax2.set_ylabel('Flux [ph/s/tbw]')
+ax2.set_ylabel('Flux [ph/s/0.3A/tbw]')
 # ax2.set_yscale('log')
 # ax2.set_ylim(10e9, 10e13)
 
@@ -346,3 +346,49 @@ ax.legend()
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
 plt.savefig('plot/SoTeXS-compare-07-08_multilayer_efficiency.png')
+
+
+# Flux Density
+fig, (ax) = plt.subplots(1, 1,figsize=(12,12))
+for ind, es in enumerate(exit_slit_list):
+    # 2400
+    window = 50
+
+    filtered_flux = flux07[flux07['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    abs_flux = filtered_flux['PhotonFlux1']
+    foc_area = (filtered_flux['VerticalFocusFWHM']*filtered_flux['HorizontalFocusFWHM'])*1000  # in µm²
+    flux_density = abs_flux / foc_area
+    ax.plot(p.moving_average(energy, window),p.moving_average(flux_density, window), label=f'2400,θ=0.7')
+
+    filtered_flux = flux08[flux08['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    abs_flux = filtered_flux['PhotonFlux1']
+    foc_area = (filtered_flux['VerticalFocusFWHM']*filtered_flux['HorizontalFocusFWHM'])*1000  # in µm²
+    flux_density = abs_flux / foc_area
+    ax.plot(p.moving_average(energy, window),p.moving_average(flux_density, window), label=f'2400,θ=0.8')
+
+    # 1200
+    filtered_flux = flux07_1200[flux07_1200['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    abs_flux = filtered_flux['PhotonFlux1']
+    foc_area = (filtered_flux['VerticalFocusFWHM']*filtered_flux['HorizontalFocusFWHM'])*1000  # in µm²
+    flux_density = abs_flux / foc_area
+    ax.plot(p.moving_average(energy, window),p.moving_average(flux_density, window), label=f'1200,θ=0.7')
+
+    filtered_flux = flux08_1200[flux08_1200['ExitSlit.openingHeight'] == es]
+    energy = filtered_flux['CPMU20.photonEnergy']
+    abs_flux = filtered_flux['PhotonFlux1']
+    foc_area = (filtered_flux['VerticalFocusFWHM']*filtered_flux['HorizontalFocusFWHM'])*1000  # in µm²
+    flux_density = abs_flux / foc_area
+    ax.plot(p.moving_average(energy, window),p.moving_average(flux_density, window), label=f'1200,θ=0.8')
+
+ax.set_xlabel(f'Energy [eV]')
+ax.set_ylabel('Flux Density [ph/s/0.3A/tbw/µm²]')
+ax.set_title('Available Flux (in percent)')
+ax.grid(which='both', axis='both')
+ax.legend()
+
+plt.suptitle('SoTeXS, ES=30 µm')
+plt.tight_layout()
+plt.savefig('plot/SoTeXS-compare-07-08_flux_density.png')

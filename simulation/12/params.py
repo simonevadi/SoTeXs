@@ -5,7 +5,7 @@ import pandas as pd
 rounds_1200 = 1
 rounds_ml   = 1
 ncpu        = 30
-nrays       = 1e5
+nrays       = 5e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
