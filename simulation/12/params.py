@@ -9,7 +9,7 @@ nrays  = 1e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy      = np.arange(500, 2550.1,0.2)
+hb_1200_energy      = np.arange(500, 2550.1,1) # .2 to see cromium dip
 hb_1200_SlitSize    = np.array([0.03])
 hb_1200_cff         = np.array([2.25])
 
@@ -27,8 +27,8 @@ grating = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat',
 mirror = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat',
                       sep='\s+')
 
-ml_cff = grating['Cff'].to_numpy().flatten()#[::10]
-ml_energy = grating['Energy'].to_numpy().flatten()#[::10]
+ml_cff = grating['Cff'].to_numpy().flatten()[::10]
+ml_energy = grating['Energy'].to_numpy().flatten()[::10]
 
 # Extract efficiency from Andrey's data 
 common_energy = None
