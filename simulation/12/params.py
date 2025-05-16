@@ -3,13 +3,17 @@ import os
 import pandas as pd
 
 rounds_1200 = 1
-rounds_ml = 1
-ncpu    = 30
-nrays  = 1e5
+rounds_ml   = 1
+ncpu        = 30
+nrays       = 1e5
 
 #   PARAMS FOR 1200l/mm GRATING SIMULATIONS
 hb_1200_order       = 1
-hb_1200_energy      = np.arange(500, 2550.1,1) # .2 to see cromium dip
+hb_1200_energy = np.concatenate([
+    np.arange(500, 570, 1),       # Step of 1 from 500 to 570 (exclusive)
+    np.arange(570, 590.2, 0.2),  # Step of 0.2 from 570 to 590 (inclusive)
+    np.arange(590, 2550.1, 1)    # Step of 1 from 590 to 2550 (inclusive)
+])  # .2 to see chromium dip
 hb_1200_SlitSize    = np.array([0.03])
 hb_1200_cff         = np.array([2.25])
 
@@ -18,7 +22,7 @@ hb_1200_cff         = np.array([2.25])
 ml_order        = 2
 ml_SlitSize     = np.array([0.03])
 ml_grating      = np.array([2400])
-ml_nrays   = nrays
+ml_nrays        = nrays
 
 # ml_rml_file_path   = os.path.join('rml/'+ml_rml_file_name+'.rml')
 
@@ -27,8 +31,8 @@ grating = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat',
 mirror = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat',
                       sep='\s+')
 
-ml_cff = grating['Cff'].to_numpy().flatten()[::10]
-ml_energy = grating['Energy'].to_numpy().flatten()[::10]
+ml_cff = grating['Cff'].to_numpy().flatten()#[::10]
+ml_energy = grating['Energy'].to_numpy().flatten()#[::10]
 
 # Extract efficiency from Andrey's data 
 common_energy = None
