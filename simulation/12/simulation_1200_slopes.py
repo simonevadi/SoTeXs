@@ -1,21 +1,21 @@
 import pandas as pd
-
+import numpy as np
 from raypyng import Simulate
 
 # define the values of the parameters to scan 
-from params import hb_1200_order as order,  hb_1200_energy as energy
+from params import hb_1200_order as order
 from params import hb_1200_SlitSize as SlitSize
 from params import hb_1200_cff as cff
-from params import nrays, rounds_1200 as rounds
 from params import ncpu
 
-sim = Simulate('rml/sotexs_1200.rml', hide=True)
+sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
 
-
-
+energy = np.arange(500, 2550.1, 500)    
+rounds = 10
+nrays  = 5e5
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.openingHeight:SlitSize},
@@ -23,13 +23,19 @@ params = [
             {beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
             {beamline.CPMU20.numberRays:nrays}, 
+            {beamline.M1.slopeErrorMer:[0.7, 0.5, 0]}, 
+            {beamline.PremirrorM2.slopeErrorMer:[0.07, 0.05, 0]}, 
+            {beamline.PG.slopeErrorMer:[0.7, 0.05, 0]}, 
+            {beamline.M3.slopeErrorSag:[1, 0.5, 0]}, 
+            {beamline.KB_ver.slopeErrorMer:[0.07, 0.05, 0]}, 
+            {beamline.KB_hor.slopeErrorMer:[0.07, 0.05, 0]}, 
         ]
 
 #and then plug them into the Simulation class
 sim.params=params
 
 # sim.simulation_folder = '/home/simone/Documents/RAYPYNG/raypyng/test'
-sim.simulation_name = '1200_08'
+sim.simulation_name = '1200_slopes'
 
 # turn off reflectivity
 # sim.reflectivity(reflectivity=True)
@@ -45,8 +51,6 @@ sim.exports  =  [{beamline.DetectorAtFocus:['RawRaysOutgoing']}]
 undulator_table = pd.read_csv('undulator/CPMU20.csv')
 sim.undulator_table = undulator_table
 
-# create the rml files
-#sim.rml_list()
 
 #uncomment to run the simulations
 sim.run(multiprocessing=ncpu, force=False, remove_round_folders=True, remove_rawrays=True)
