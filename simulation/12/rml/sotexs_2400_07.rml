@@ -134,14 +134,14 @@
    <param id="totalWidth" enabled="T">25</param>
    <param id="totalLength" enabled="T">650</param>
    <param id="grazingIncAngle" enabled="F">4.792199593081222</param>
-   <param id="distancePreceding" enabled="F">6181.556206808367</param>
+   <param id="distancePreceding" enabled="F">6122.334310212552</param>
    <param id="azimuthalAngle" enabled="F">0</param>
    <param id="systemMount" comment="SX700 (as premirror of a grating)" enabled="T">1</param>
-   <param id="premirrorShiftZ" enabled="T">-30</param>
+   <param id="premirrorShiftZ" enabled="T">-330</param>
    <param id="pimpaleAlpha1" enabled="T">1</param>
    <param id="pimpaleAlpha2" enabled="T">2</param>
    <param id="pimpaleAlpha3" enabled="T">3</param>
-   <param id="distancePremirrorGrating" enabled="T">120.12</param>
+   <param id="distancePremirrorGrating" enabled="T">180.181</param>
    <param id="reflectivityType" comment="100%" enabled="T">0</param>
    <param id="reflectivitySenkrecht" enabled="T">1</param>
    <param id="reflectivityParallel" enabled="T">1</param>
@@ -181,9 +181,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-153.2331999447739577</x>
-    <y>7.5637747624917679</y>
-    <z>18269.9059130793611985</z>
+    <x>-145.9496095216962033</x>
+    <y>-12.4638583712106978</y>
+    <z>17971.8802458051541180</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>0.9997014897811831</x>
@@ -220,7 +220,7 @@
    <param id="deviationAngle" enabled="F">10</param>
    <param id="halfConeAngle" enabled="F">10</param>
    <param id="pimpaleX0" enabled="T">6300</param>
-   <param id="pimpaleY0" enabled="T">20</param>
+   <param id="pimpaleY0" enabled="T">30</param>
    <param id="premirrorMountPsi0" enabled="T">0</param>
    <param id="designEnergyMounting" auto="T" enabled="T">1500</param>
    <param id="lineDensity" enabled="T">2400</param>
@@ -228,7 +228,7 @@
    <param id="cFactor" enabled="T">1.33</param>
    <param id="alpha" auto="T" enabled="T">85.88807911874653</param>
    <param id="beta" auto="T" enabled="T">-84.52752169509104</param>
-   <param id="distancePreceding" enabled="F">120.1204901156426</param>
+   <param id="distancePreceding" enabled="F">180.1807351734638</param>
    <param id="azimuthalAngle" enabled="T">180</param>
    <param id="entranceArmLength" enabled="T">100</param>
    <param id="lineSpacing" comment="constant" enabled="T">0</param>
@@ -271,9 +271,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-153.9227219747301092</x>
-    <y>20.0000938021778829</y>
-    <z>18298.1193697870367032</z>
+    <x>-153.9227217812377546</x>
+    <y>30.0001407032668048</y>
+    <z>18298.1193618698307546</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>-0.9997014897811831</x>
@@ -314,7 +314,7 @@
    <param id="azimuthalAngle" enabled="T">270</param>
    <param id="reflectivityType" comment="Derived by Material" enabled="T">1</param>
    <param id="materialSubstrate" enabled="T">Si</param>
-   <param id="roughnessSubstrate" enabled="T">0</param>
+   <param id="roughnessSubstrate" enabled="T">0.3</param>
    <param id="densitySubstrate" auto="T" enabled="T">2.32</param>
    <param id="surfaceCoating" comment="Two Coatings/Multilayers with top layer" enabled="T">3</param>
    <param id="coatingFile" absolute="" enabled="F"></param>
@@ -348,9 +348,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-202.7870782800364111</x>
-    <y>20.0000938021783270</y>
-    <z>20297.5223493494013383</z>
+    <x>-202.7870780865440565</x>
+    <y>30.0001407032672489</y>
+    <z>20297.5223414321953896</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>-0.0000000000000000</x>
@@ -398,9 +398,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-202.7870782800364395</x>
-    <y>20.0000938021804373</y>
-    <z>29797.5223493493977003</z>
+    <x>-202.7870780865440850</x>
+    <y>30.0001407032693592</y>
+    <z>29797.5223414321953896</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>0.9999999999999999</x>
@@ -469,9 +469,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-202.7870782800364395</x>
-    <y>20.0000938021812793</y>
-    <z>33597.5223493493977003</z>
+    <x>-202.7870780865440850</x>
+    <y>30.0001407032702012</y>
+    <z>33597.5223414321953896</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>-0.9999999999999999</x>
@@ -550,9 +550,9 @@
    <param id="rotationYerror" enabled="F">0</param>
    <param id="rotationZerror" enabled="F">0</param>
    <param id="worldPosition" enabled="F">
-    <x>-202.7870782800364395</x>
-    <y>12.6704403563854004</y>
-    <z>33897.4327962837560335</z>
+    <x>-202.7870780865440850</x>
+    <y>22.6704872574743206</y>
+    <z>33897.4327883665537229</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>0.0000000000000000</x>
@@ -583,9 +583,9 @@
   <object name="DetectorAtFocus" type="ImagePlane">
    <param id="distanceImagePlane" enabled="T">1000</param>
    <param id="worldPosition" enabled="F">
-    <x>-227.2192564326896047</x>
-    <y>-11.7544445414210070</y>
-    <z>34896.8358649544752552</z>
+    <x>-227.2192562391972501</x>
+    <y>-1.7543976403320869</y>
+    <z>34896.8358570372729446</z>
    </param>
    <param id="worldXdirection" enabled="F">
     <x>0.9997014897811830</x>
@@ -610,7 +610,7 @@
   <axes>true</axes>
   <names>true</names>
   <angles>true</angles>
-  <scaling>1</scaling>
+  <scaling>0</scaling>
   <scaleLinear>1</scaleLinear>
   <scaleExponent>1</scaleExponent>
   <scaleLinearOffset>600</scaleLinearOffset>
