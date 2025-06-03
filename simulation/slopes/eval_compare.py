@@ -50,7 +50,7 @@ fig, (axs) = plt.subplots(4, 2,figsize=(12,12))
 ax2=axs[0,0]
 de = 38.9579-30.0000
 table = 'Henke'
-energy_coating = np.arange(500, 5001, de)
+E = np.arange(500, 5001, de)
 
 # 0.7 degrees
 theta = 0.7
@@ -60,15 +60,8 @@ B4C = rm.Material('C', rho=2.52,  kind='mirror',  table=table)
 IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40, 
                         bLayer=Cr, bThickness=60, 
                         nPairs=1, substrate=Ir)
-IrCrB4C, _ = get_reflectivity(IrCrB4C, E=energy_coating, theta=theta)
-ax2.plot(energy_coating, IrCrB4C, label=f'IrCrB4C at {theta}°')
-
-
-# Save data to a CSV file
-output_file = "coating_IrCrB4C_08.csv"
-np.savetxt(output_file, np.column_stack((energy_coating, IrCrB4C)),
-           delimiter=",", header="Energy[eV],Reflectivity", comments='')
-
+IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
+ax2.plot(E, IrCrB4C, label=f'IrCrB4C at {theta}°')
 
 # 0.8 degrees
 theta = 0.8
@@ -78,8 +71,8 @@ B4C = rm.Material('C', rho=2.52,  kind='mirror',  table=table)
 IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40, 
                         bLayer=Cr, bThickness=60, 
                         nPairs=1, substrate=Ir)
-IrCrB4C, _ = get_reflectivity(IrCrB4C, E=energy_coating, theta=theta)
-ax2.plot(energy_coating, IrCrB4C, linestyle='dashed', label=f'IrCrB4C at {theta}°')
+IrCrB4C, _ = get_reflectivity(IrCrB4C, E=E, theta=theta)
+ax2.plot(E, IrCrB4C, linestyle='dashed', label=f'IrCrB4C at {theta}°')
 
 
 
