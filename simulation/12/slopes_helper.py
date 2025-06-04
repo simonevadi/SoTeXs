@@ -17,11 +17,13 @@ def filter_df(df, col_to_set=None, value=None):
     filtered_df = df[mask.all(axis=1)]
     return filtered_df
 
-def filter_df_by_values(df, col_values):
+def filter_df_by_values(df, col_values, atol=1e-8, debug=False):
     """
     Filter the DataFrame by specifying a dictionary of {column: value} pairs.
-    Only rows matching all specified values will be returned.
+    Uses np.isclose for float comparisons.
+    If debug=True, prints matching info for each column.
     """
+    import numpy as np
     cols = [
         'M1.slopeErrorMer',
         'PremirrorM2.slopeErrorMer',
@@ -31,9 +33,19 @@ def filter_df_by_values(df, col_values):
         'KB_hor.slopeErrorMer'
     ]
     mask = pd.Series([True] * len(df), index=df.index)
+    if debug:
+        print("DEBUG: Unique values and matches per column:")
     for col, val in col_values.items():
         if col in cols:
-            mask &= (df[col] == val)
+            if np.issubdtype(df[col].dtype, np.floating):
+                col_mask = np.isclose(df[col], val, atol=atol)
+            else:
+                col_mask = (df[col] == val)
+            mask &= col_mask
+            if debug:
+                print(f"{col}: unique={df[col].unique()} | looking for {val} | matches={col_mask.sum()} | running total={mask.sum()}")
+    if debug:
+        print(f"DEBUG: Final number of matching rows: {mask.sum()}")
     filtered_df = df[mask]
     return filtered_df
 

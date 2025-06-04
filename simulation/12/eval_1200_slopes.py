@@ -22,7 +22,7 @@ el_dict = {
         'M1.slopeErrorMer':0.5,
         'PremirrorM2.slopeErrorMer':0.05,
         'PG.slopeErrorMer':0.05,
-        'M3.slopeErrorSag':0.05,
+        'M3.slopeErrorSag':0.5,
         'KB_ver.slopeErrorMer':0.05,
         'KB_hor.slopeErrorMer':0.05
     }
@@ -34,7 +34,6 @@ for element,slope in el_dict.items():
     filtered_sim = filter_df(sim, col_to_set=element, value=slope)
     extract_and_plot(filtered_sim, axs, label=f'{element} {slope} rms')
 # worst case
-breakpoint()
 filtered_sim = filter_df_by_values(sim, el_dict)
 extract_and_plot(filtered_sim, axs, label=f'All Slopes Errors')
 
