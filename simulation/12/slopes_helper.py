@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 def filter_df(df, col_to_set=None, value=None):
     cols = [
@@ -15,6 +15,26 @@ def filter_df(df, col_to_set=None, value=None):
     if col_to_set is not None and value is not None and col_to_set in cols:
         mask[col_to_set] = (df[col_to_set] == value)
     filtered_df = df[mask.all(axis=1)]
+    return filtered_df
+
+def filter_df_by_values(df, col_values):
+    """
+    Filter the DataFrame by specifying a dictionary of {column: value} pairs.
+    Only rows matching all specified values will be returned.
+    """
+    cols = [
+        'M1.slopeErrorMer',
+        'PremirrorM2.slopeErrorMer',
+        'PG.slopeErrorMer',
+        'M3.slopeErrorSag',
+        'KB_ver.slopeErrorMer',
+        'KB_hor.slopeErrorMer'
+    ]
+    mask = pd.Series([True] * len(df), index=df.index)
+    for col, val in col_values.items():
+        if col in cols:
+            mask &= (df[col] == val)
+    filtered_df = df[mask]
     return filtered_df
 
 def extract_and_plot(dataframe, axs, label):

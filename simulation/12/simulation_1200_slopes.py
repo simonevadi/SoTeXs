@@ -14,8 +14,8 @@ rml=sim.rml
 beamline = sim.rml.beamline
 
 energy = np.arange(500, 2000.1, 500)    
-rounds = 1
-nrays  = 5e5
+rounds = 20
+nrays  = 1e5
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.openingHeight:SlitSize},
@@ -23,7 +23,7 @@ params = [
             {beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
             {beamline.CPMU20.numberRays:nrays}, 
-            {beamline.M1.slopeErrorMer:[2, 0.5, 0]}, 
+            {beamline.M1.slopeErrorMer:[1, 0.5, 0]}, 
             {beamline.PremirrorM2.slopeErrorMer:[0.2, 0.05, 0]}, 
             {beamline.PG.slopeErrorMer:[0.2, 0.05, 0]}, 
             {beamline.M3.slopeErrorSag:[2, 1, 0.5, 0]}, 
