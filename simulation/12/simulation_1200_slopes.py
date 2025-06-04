@@ -13,9 +13,9 @@ sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
 rml=sim.rml
 beamline = sim.rml.beamline
 
-energy = np.arange(500, 2000.1, 250)    
+energy = np.arange(500, 2000.1, 500)    
 rounds = 1
-nrays  = 3e5
+nrays  = 5e5
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.openingHeight:SlitSize},
@@ -38,7 +38,7 @@ sim.params=params
 sim.simulation_name = '1200_slopes'
 
 # turn off reflectivity
-# sim.reflectivity(reflectivity=True)
+sim.reflectivity(reflectivity=False)
 
 # repeat the simulations as many time as needed
 sim.repeat = rounds
