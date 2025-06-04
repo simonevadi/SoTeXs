@@ -13,9 +13,9 @@ sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
 rml=sim.rml
 beamline = sim.rml.beamline
 
-energy = np.arange(500, 2000.1, 500)    
+energy = np.arange(500, 2000.1, 250)    
 rounds = 1
-nrays  = 5e5
+nrays  = 3e5
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.openingHeight:SlitSize},
@@ -23,12 +23,12 @@ params = [
             {beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
             {beamline.CPMU20.numberRays:nrays}, 
-            {beamline.M1.slopeErrorMer:[1, 0.5, 0]}, 
-            {beamline.PremirrorM2.slopeErrorMer:[0.1, 0.05, 0]}, 
-            {beamline.PG.slopeErrorMer:[0.1, 0.05, 0]}, 
-            {beamline.M3.slopeErrorSag:[1, 0.5, 0]}, 
-            {beamline.KB_ver.slopeErrorMer:[0.1, 0.05, 0]}, 
-            {beamline.KB_hor.slopeErrorMer:[0.1, 0.05, 0]}, 
+            {beamline.M1.slopeErrorMer:[2, 0.5, 0]}, 
+            {beamline.PremirrorM2.slopeErrorMer:[0.2, 0.05, 0]}, 
+            {beamline.PG.slopeErrorMer:[0.2, 0.05, 0]}, 
+            {beamline.M3.slopeErrorSag:[2, 1, 0.5, 0]}, 
+            {beamline.KB_ver.slopeErrorMer:[0.2, 0.05, 0]}, 
+            {beamline.KB_hor.slopeErrorMer:[0.2, 0.05, 0]}, 
         ]
 
 #and then plug them into the Simulation class

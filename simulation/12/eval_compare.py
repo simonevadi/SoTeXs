@@ -250,7 +250,7 @@ ax.set_ylim(6, 14)
 
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-plt.savefig('plot/SoTeXS-compare-07-08.png')
+plt.savefig('plot/SoTeXS.png')
 plt.close()
 
 # plotting efficiencies only 2400

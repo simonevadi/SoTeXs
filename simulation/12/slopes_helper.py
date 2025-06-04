@@ -53,7 +53,7 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     ax.set_xlabel('Energy [eV]')
     ax.set_ylabel('Focus Size [um]')
     ax.set_title('Horizontal focus')
-    ax.set_ylim(6, 14)
+    ax.set_ylim(4, 16)
 
 
     # VERTICAL FOCUS
@@ -61,7 +61,7 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     ax.set_xlabel('Energy [eV]')
     ax.set_ylabel('Focus Size [um]')
     ax.set_title('Vertical focus')
-    ax.set_ylim(6, 14)
+    ax.set_ylim(4, 16)
 
     plt.suptitle(title)
     plt.tight_layout()
