@@ -15,7 +15,7 @@ beamline = sim.rml.beamline
 
 energy = np.arange(500, 2000.1, 500)    
 rounds = 20
-nrays  = 1e5
+nrays  = 2e5
 # define a list of dictionaries with the parameters to scan
 params = [  
             {beamline.ExitSlit.openingHeight:SlitSize},
