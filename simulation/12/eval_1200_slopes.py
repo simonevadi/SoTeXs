@@ -26,7 +26,7 @@ el_dict = {
         'KB_ver.slopeErrorMer':0.05,
         'KB_hor.slopeErrorMer':0.05
     }
-fig, (axs) = plt.subplots(2, 2,figsize=(24,12))
+fig, (axs) = plt.subplots(4, 1,figsize=(12,12))
 # No Slopes Errors
 filtered_sim = filter_df(sim)
 extract_and_plot(filtered_sim, axs, label='No Slopes Errors')
@@ -51,7 +51,7 @@ el_dict = {
     }
 
 for element,slopes in el_dict.items():
-    fig, (axs) = plt.subplots(2, 2,figsize=(24,12))
+    fig, (axs) = plt.subplots(4, 1,figsize=(12,12))
     for slope in slopes:
         filtered_sim = filter_df(sim, col_to_set=element, value=slope)
         extract_and_plot(filtered_sim, axs, label=f'{element} {slope} rms')
