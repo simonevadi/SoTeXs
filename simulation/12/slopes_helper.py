@@ -1,15 +1,17 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
-def filter_df(df, col_to_set=None, value=None):
-    cols = [
+def filter_df(df, cols=None, col_to_set=None, value=None):
+    if cols == None:
+        cols = [
         'M1.slopeErrorMer',
         'PremirrorM2.slopeErrorMer',
         'PG.slopeErrorMer',
         'M3.slopeErrorSag',
         'KB_ver.slopeErrorMer',
         'KB_hor.slopeErrorMer'
-    ]
+        ]
 
     mask = (df[cols] == 0)
     if col_to_set is not None and value is not None and col_to_set in cols:
@@ -17,21 +19,21 @@ def filter_df(df, col_to_set=None, value=None):
     filtered_df = df[mask.all(axis=1)]
     return filtered_df
 
-def filter_df_by_values(df, col_values, atol=1e-8, debug=False):
+def filter_df_by_values(df, col_values, cols=None, atol=1e-8, debug=False):
     """
     Filter the DataFrame by specifying a dictionary of {column: value} pairs.
     Uses np.isclose for float comparisons.
     If debug=True, prints matching info for each column.
     """
-    import numpy as np
-    cols = [
+    if cols ==None:
+        cols = [
         'M1.slopeErrorMer',
         'PremirrorM2.slopeErrorMer',
         'PG.slopeErrorMer',
         'M3.slopeErrorSag',
         'KB_ver.slopeErrorMer',
         'KB_hor.slopeErrorMer'
-    ]
+        ]
     mask = pd.Series([True] * len(df), index=df.index)
     if debug:
         print("DEBUG: Unique values and matches per column:")
