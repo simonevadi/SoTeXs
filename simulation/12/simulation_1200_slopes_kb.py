@@ -23,19 +23,21 @@ params = [
             {beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
             {beamline.CPMU20.numberRays:nrays}, 
-            {beamline.M1.slopeErrorMer:[1, 0.5, 0]}, 
-            {beamline.PremirrorM2.slopeErrorMer:[0.2, 0.05, 0]}, 
-            {beamline.PG.slopeErrorMer:[0.2, 0.05, 0]}, 
-            {beamline.M3.slopeErrorSag:[2, 1, 0.5, 0]}, 
+            {beamline.M1.slopeErrorMer:[0.5, 0]}, 
+            {beamline.PremirrorM2.slopeErrorMer:[0.05, 0]}, 
+            {beamline.PG.slopeErrorMer:[0.05, 0]}, 
+            {beamline.M3.slopeErrorSag:[0.5, 0]}, 
             {beamline.KB_ver.slopeErrorMer:[0.2, 0.05, 0]}, 
+            {beamline.KB_ver.slopeErrorSag:[0.3, 0.1, 0]}, 
             {beamline.KB_hor.slopeErrorMer:[0.2, 0.05, 0]}, 
+            {beamline.KB_hor.slopeErrorSag:[0.3, 0.1, 0]}, 
         ]
 
 #and then plug them into the Simulation class
 sim.params=params
 
 # sim.simulation_folder = '/home/simone/Documents/RAYPYNG/raypyng/test'
-sim.simulation_name = '1200_slopes_all'
+sim.simulation_name = '1200_slopes_kb'
 
 # turn off reflectivity
 sim.reflectivity(reflectivity=False)
