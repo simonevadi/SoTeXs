@@ -8,14 +8,14 @@ import matplotlib.pyplot as plt
 
 
 # 1200 l/mm grating
-flux_simulation_folder07 = 'RAYPy_Simulation_1200_slopes_kb' 
+flux_simulation_folder07 = 'RAYPy_Simulation_1200_slopes_smart' 
 
 oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 sim = pd.read_csv(os.path.join(flux_simulation_folder07, oe))
 sim = sim[sim['CPMU20.photonEnergy'] < 2200]
 
 # create eval folder
-eval_folder = os.path.join('plot', 'slopes_kb')
+eval_folder = os.path.join('plot', 'slopes_smart')
 os.makedirs(eval_folder, exist_ok=True)
 
 # All Zeros but one
