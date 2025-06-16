@@ -7,10 +7,10 @@
    <param id="sigmaType" comment="standard" enabled="T">0</param>
    <param id="undulatorLength" enabled="T">1.52</param>
    <param id="electronDistributionType" comment="manual" enabled="T">0</param>
-   <param id="electronSigmaX" enabled="T">85.90000000000001</param>
-   <param id="electronSigmaXs" enabled="T">85.90000000000001</param>
-   <param id="electronSigmaY" enabled="T">12.4</param>
-   <param id="electronSigmaYs" enabled="T">9.529999999999999</param>
+   <param id="electronSigmaX" enabled="T">68.59</param>
+   <param id="electronSigmaXs" enabled="T">71.65000000000001</param>
+   <param id="electronSigmaY" enabled="T">11.21</param>
+   <param id="electronSigmaYs" enabled="T">8.75</param>
    <param id="sourceDepth" enabled="T">1</param>
    <param id="alignmentError" comment="No" enabled="T">1</param>
    <param id="translationXerror" enabled="F">0</param>
