@@ -3,15 +3,7 @@ import pandas as pd
 import numpy as np
 
 def filter_df(df, cols=None, col_to_set=None, value=None):
-    if cols == None:
-        cols = [
-        'M1.slopeErrorMer',
-        'PremirrorM2.slopeErrorMer',
-        'PG.slopeErrorMer',
-        'M3.slopeErrorSag',
-        'KB_ver.slopeErrorMer',
-        'KB_hor.slopeErrorMer'
-        ]
+
 
     mask = (df[cols] == 0)
     if col_to_set is not None and value is not None and col_to_set in cols:
@@ -25,31 +17,18 @@ def filter_df_by_values(df, col_values, cols=None, atol=1e-8, debug=False):
     Uses np.isclose for float comparisons.
     If debug=True, prints matching info for each column.
     """
-    if cols ==None:
-        cols = [
-        'M1.slopeErrorMer',
-        'PremirrorM2.slopeErrorMer',
-        'PG.slopeErrorMer',
-        'M3.slopeErrorSag',
-        'KB_ver.slopeErrorMer',
-        'KB_hor.slopeErrorMer'
-        ]
+
     mask = pd.Series([True] * len(df), index=df.index)
     if debug:
         print("DEBUG: Unique values and matches per column:")
     for col, val in col_values.items():
-        if col in cols:
-            if np.issubdtype(df[col].dtype, np.floating):
-                col_mask = np.isclose(df[col], val, atol=atol)
-            else:
-                col_mask = (df[col] == val)
-            mask &= col_mask
-            if debug:
-                print(f"{col}: unique={df[col].unique()} | looking for {val} | matches={col_mask.sum()} | running total={mask.sum()}")
+        count = (df[col] == val).sum()
+        df = df[df[col] == val]
+        if debug:
+            print(f"{col} looking for {val} | found: {count} matches")
     if debug:
         print(f"DEBUG: Final number of matching rows: {mask.sum()}")
-    filtered_df = df[mask]
-    return filtered_df
+    return df
 
 def extract_and_plot(dataframe, axs, label):
     energy = dataframe['CPMU20.photonEnergy']
@@ -70,8 +49,7 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     ax.set_ylabel('Transmitted Bandwidth [eV]')
     ax.set_title('Transmitted bandwidth (tbw)')
     ax.grid(which='both', axis='both')
-    ax.legend()
-
+    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     # BANDWIDTH
     ax = axs[1]
     ax.set_xlabel('Energy [eV]')
@@ -101,5 +79,6 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     plt.savefig(savepath)
     if showplot:
         plt.show()
+    plt.close()
 
 

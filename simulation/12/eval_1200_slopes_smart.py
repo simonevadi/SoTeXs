@@ -25,28 +25,31 @@ el_dict = {
         'PremirrorM2.slopeErrorSag':0.5,
         'PG.slopeErrorMer':0.05,
         'PG.slopeErrorSag':0.5,
-        'M3.slopeErrorSag':0.5,
+        'M3.slopeErrorSag':1,
         'M3.slopeErrorMer':0.3,
         'KB_ver.slopeErrorMer':0.05,
-        'KB_ver.slopeErrorSag':0.3,
+        'KB_ver.slopeErrorSag':0.1,
         'KB_hor.slopeErrorMer':0.05,
-        'KB_hor.slopeErrorSag':0.3
+        'KB_hor.slopeErrorSag':0.1
     }
-# fig, (axs) = plt.subplots(4, 1,figsize=(12,12))
+fig, (axs) = plt.subplots(4, 1,figsize=(12,12))
 
-# # No Slopes Errors
-# filtered_sim = filter_df(sim)
-# extract_and_plot(filtered_sim, axs, label='No Slopes Errors')
+# No Slopes Errors
+filtered_sim = filter_df(sim, cols=list(el_dict.keys()))
+extract_and_plot(filtered_sim, axs, label='No Slopes Errors')
+
+# elemets
 # for element,slope in el_dict.items():
-#     filtered_sim = filter_df(sim, col_to_set=element, value=slope)
+#     filtered_sim = filter_df(sim, cols=list(el_dict.keys()), col_to_set=element, value=slope)
 #     extract_and_plot(filtered_sim, axs, label=f'{element} {slope} rms')
 
-# # worst case
-# filtered_sim = filter_df_by_values(sim, el_dict)
-# extract_and_plot(filtered_sim, axs, label=f'All Slopes Errors')
+# worst case
+filtered_sim = filter_df_by_values(sim, el_dict, cols=list(el_dict.keys()))
+extract_and_plot(filtered_sim, axs, label=f'All Slopes Errors')
 
-# decorate_and_save_plot(axs, title='SoTeXS, ES=30 µm', savepath='plot/slopes/SoTeXS-1200-slopes.png')
-
+decorate_and_save_plot(axs, title='SoTeXS, ES=30 µm', 
+                       savepath='plot/slopes/SoTeXS-1200-slopes.png', 
+                       showplot=False)
 
 # Each element separately
 base_dir = 'RAYPy_Simulation_1200_slopes_smart'
@@ -65,23 +68,29 @@ files = {
     'KB_hor.slopeErrorSag': 'input_param_KB_hor_slopeErrorSag.dat'
 }
 
-el_dict = {
-    key: np.loadtxt(os.path.join(base_dir, fname))[np.loadtxt(os.path.join(base_dir, fname)) != 0]
-    for key, fname in files.items()
-}
-
+el_dict = {}
+for key, fname in files.items():
+    file_path = os.path.join(base_dir, fname)
+    data = np.loadtxt(file_path)
+    filtered_data = np.unique(data[data != 0])
+    el_dict[key] = filtered_data
+    
 for element,slopes in el_dict.items():
     fig, (axs) = plt.subplots(4, 1,figsize=(12,12))
+    # No Slopes Errors
+    filtered_sim = filter_df(sim, cols=list(el_dict.keys()))
+    extract_and_plot(filtered_sim, axs, label='No Slopes Errors')
+
     for slope in slopes:
         filtered_sim = filter_df(sim, 
                                  cols=list(el_dict.keys()), 
                                  col_to_set=element, 
                                  value=slope)
-        print(f'element: {element}, slope: {slope}')
-        print(filtered_sim)
-        extract_and_plot(filtered_sim, axs, label=f'{element} {slope} rms')
+        extract_and_plot(filtered_sim, axs, label=f'{element} {np.round(slope,2)} rms')
 
-    decorate_and_save_plot(axs, title='SoTeXS, ES=30 µm', savepath=f'plot/slopes/SoTeXS-1200-slopes-{element}.png')
-    # plt.show()
+    title = f"SoTeXS, {element.split('.')[0]} {element.split('.')[1]} slope Error, ES=30 µm"
+    decorate_and_save_plot(axs, title=title, 
+                           savepath=f'plot/slopes/SoTeXS-1200-slopes-{element}.png', 
+                           showplot=False)
 
 
