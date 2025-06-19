@@ -14,8 +14,8 @@ sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
 rml=sim.rml
 beamline = sim.rml.beamline
 
-energy = np.arange(500, 2000.1, 100)    
-rounds = 10
+energy = np.arange(500, 2000.1, 250)    
+rounds = 8
 nrays  = 5e5
 
 slopes = {
@@ -35,7 +35,7 @@ slopes = {
 slopes_dict = make_slopes_params(slopes)
 # define a list of dictionaries with the parameters to scan
 params = [  
-            {beamline.ExitSlit.openingHeight:SlitSize},
+            {beamline.ExitSlit.openingHeight:[0.03,0.02,0.010]},
             {beamline.CPMU20.photonEnergy:energy},
             {beamline.PG.cFactor:cff}, 
             {beamline.PG.orderDiffraction:order},
@@ -49,7 +49,7 @@ params.append(slopes_dict)  # append the slopes dictionary to the list of parame
 sim.params=params
 
 # sim.simulation_folder = '/home/simone/Documents/RAYPYNG/raypyng/test'
-sim.simulation_name = '1200_slopes_smart'
+sim.simulation_name = '1200_slopes_and_exit_slit'
 
 # turn off reflectivity
 # sim.reflectivity(reflectivity=False)
