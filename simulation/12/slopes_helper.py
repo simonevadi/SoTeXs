@@ -1,10 +1,22 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
+
+def make_slopes_params(param_dict):
+    new_dict = {}
+    for key, value in param_dict.items():
+        new_dict[key] = [0]
+        new_dict[key].append(value[1])  # single value for the parameter
+    for key,value_tuple in param_dict.items():
+        values = value_tuple[0]
+        for value in values:
+            for new_key in new_dict.keys():
+                if new_key == key:
+                    new_dict[new_key].append(value)
+                else:
+                    new_dict[new_key].append(0)     
+    return new_dict
 
 def filter_df(df, cols=None, col_to_set=None, value=None):
-
-
     mask = (df[cols] == 0)
     if col_to_set is not None and value is not None and col_to_set in cols:
         mask[col_to_set] = (df[col_to_set] == value)

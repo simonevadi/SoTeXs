@@ -4,10 +4,9 @@ from raypyng import Simulate
 
 # define the values of the parameters to scan 
 from params import hb_1200_order as order
-from params import hb_1200_SlitSize as SlitSize
 from params import hb_1200_cff as cff
 from params import ncpu
-from build_params import make_slopes_params
+from slopes_helper import make_slopes_params
 
 sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
 
@@ -67,4 +66,4 @@ sim.undulator_table = undulator_table
 
 
 #uncomment to run the simulations
-sim.run(multiprocessing=ncpu, force=False, remove_round_folders=False, remove_rawrays=False)
+sim.run(multiprocessing=ncpu, force=False, remove_round_folders=True, remove_rawrays=True)
