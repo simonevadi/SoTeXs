@@ -63,7 +63,7 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     ax.set_ylabel('Focus Size [um]')
     ax.set_title('Horizontal focus')
     ax.grid(which='both', axis='both')
-    ax.set_ylim(4, 16)
+    # ax.set_ylim(4, 16)
 
 
     # VERTICAL FOCUS
@@ -72,7 +72,7 @@ def decorate_and_save_plot(axs, title=None, savepath=None, showplot=False):
     ax.set_ylabel('Focus Size [um]')
     ax.set_title('Vertical focus')
     ax.grid(which='both', axis='both')
-    ax.set_ylim(4, 16)
+    # ax.set_ylim(4, 16)
 
     plt.suptitle(title)
     plt.tight_layout()
