@@ -54,7 +54,7 @@ for es in exit_slit:
     extract_and_plot(filtered_sim, axs, label=f'All Slopes Errors')
 
     decorate_and_save_plot(axs, title=f'SoTeXS, ES={np.round(es*1000, 0)} µm', 
-                        savepath=os.path.join(plot_folder, f'SoTeXS-1200-slopes.png'), 
+                        savepath=os.path.join(plot_folder, f'SoTeXS-1200-slopes-ES_{np.round(es*1000, 0)} µm.png'), 
                         showplot=False)
 
     # Each element separately
@@ -96,7 +96,7 @@ for es in exit_slit:
 
         title = f"SoTeXS, {element.split('.')[0]} {element.split('.')[1]} slope Error, ES={int(es*1000)}µm"
         decorate_and_save_plot(axs, title=title, 
-                            savepath=os.path.join(plot_folder, f'SoTeXS-1200-slopes-{element}.png'), 
+                            savepath=os.path.join(plot_folder, f'SoTeXS-1200-slopes-{element}-ES_{np.round(es*1000, 0)} µm.png'), 
                             showplot=False)
 
 
