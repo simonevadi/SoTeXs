@@ -1,0 +1,3 @@
+Simulation Number,ExitSlit.openingHeight,CPMU20.photonEnergy,PG.orderDiffraction,CPMU20.numberRays,M1.translationXerror,PG.cFactor
+0,0.01,3000,2,500000.0,0.1,2.823
+1,0.01,3000,2,500000.0,0.2,2.823

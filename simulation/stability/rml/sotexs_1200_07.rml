@@ -3,7 +3,7 @@
  <version>1.15</version>
  <beamline>
   <object name="CPMU20" type="Simple Undulator">
-   <param id="numberRays" enabled="T">100000</param>
+   <param id="numberRays" enabled="T">1000000</param>
    <param id="sigmaType" comment="standard" enabled="T">0</param>
    <param id="undulatorLength" enabled="T">1.52</param>
    <param id="electronDistributionType" comment="manual" enabled="T">0</param>
@@ -142,20 +142,20 @@
    <param id="pimpaleAlpha2" enabled="T">2</param>
    <param id="pimpaleAlpha3" enabled="T">3</param>
    <param id="distancePremirrorGrating" enabled="T">418.108</param>
-   <param id="reflectivityType" comment="100%" enabled="T">0</param>
-   <param id="reflectivitySenkrecht" enabled="T">1</param>
-   <param id="reflectivityParallel" enabled="T">1</param>
-   <param id="reflectivityPhase" enabled="T">0</param>
-   <param id="elementSubstrate" enabled="F">Si</param>
-   <param id="roughnessSubstrate" enabled="F">0.2</param>
-   <param id="densitySubstrate" auto="T" enabled="F">2.32</param>
-   <param id="surfaceCoating" comment="One coating" enabled="F">1</param>
+   <param id="reflectivityType" comment="Derived by Material" enabled="T">1</param>
+   <param id="reflectivitySenkrecht" enabled="T">0.51371</param>
+   <param id="reflectivityParallel" enabled="T">0.512987</param>
+   <param id="reflectivityPhase" enabled="T">179.882</param>
+   <param id="elementSubstrate" enabled="T">Si</param>
+   <param id="roughnessSubstrate" enabled="T">0.2</param>
+   <param id="densitySubstrate" auto="T" enabled="T">2.32</param>
+   <param id="surfaceCoating" comment="One coating" enabled="T">1</param>
    <param id="coatingFile" absolute="" enabled="F"></param>
    <param id="numberLayer" enabled="F">2</param>
-   <param id="materialCoating1" enabled="F">Au</param>
-   <param id="thicknessCoating1" enabled="F">30</param>
-   <param id="roughnessCoating1" enabled="F">0.2</param>
-   <param id="densityCoating1" auto="T" enabled="F">19.3</param>
+   <param id="materialCoating1" enabled="T">Au</param>
+   <param id="thicknessCoating1" enabled="T">30</param>
+   <param id="roughnessCoating1" enabled="T">0.2</param>
+   <param id="densityCoating1" auto="T" enabled="T">19.3</param>
    <param id="materialCoating2" enabled="F">Cr</param>
    <param id="thicknessCoating2" enabled="F">6</param>
    <param id="roughnessCoating2" enabled="F">0.3</param>
@@ -164,7 +164,7 @@
    <param id="thicknessTopLayer" enabled="F">0.4</param>
    <param id="roughnessTopLayer" enabled="F">0.3</param>
    <param id="densityTopLayer" auto="T" enabled="F">2.26</param>
-   <param id="lateralThicknessGradientCoating" comment="No" enabled="F">0</param>
+   <param id="lateralThicknessGradientCoating" comment="No" enabled="T">0</param>
    <param id="gradientC1B1" enabled="F">0</param>
    <param id="gradientC1B2" enabled="F">0</param>
    <param id="gradientC1B3" enabled="F">0</param>
@@ -239,27 +239,27 @@
    <param id="vlsParameter4" enabled="F">0</param>
    <param id="vlsParameter5" enabled="F">0</param>
    <param id="vlsParameter6" enabled="F">0</param>
-   <param id="lineProfile" comment="blaze" enabled="F">0</param>
+   <param id="lineProfile" comment="blaze" enabled="T">0</param>
    <param id="gratingEfficiency" enabled="F">1</param>
    <param id="additionalOrder" comment="off" enabled="T">0</param>
-   <param id="blazeAngle" enabled="F">0.9</param>
-   <param id="aspectAngle" enabled="F">176.4</param>
+   <param id="blazeAngle" enabled="T">0.9</param>
+   <param id="aspectAngle" enabled="T">176.4</param>
    <param id="grooveDepth" enabled="F">15</param>
    <param id="grooveRatio" enabled="F">0.65</param>
-   <param id="multilayerFourierCoefficients" auto="T" enabled="F">11</param>
-   <param id="multilayerIntegrationSteps" auto="T" enabled="F">50</param>
-   <param id="reflectivitySenkrecht" enabled="T">1</param>
-   <param id="reflectivityParallel" enabled="T">1</param>
-   <param id="reflectivityPhase" enabled="T">0</param>
-   <param id="reflectivityType" comment="100%" enabled="T">0</param>
-   <param id="materialSubstrate" enabled="F">Si</param>
-   <param id="roughnessSubstrate" enabled="F">0.2</param>
-   <param id="densitySubstrate" auto="T" enabled="F">2.32</param>
-   <param id="surfaceCoating" comment="One coating" enabled="F">1</param>
+   <param id="multilayerFourierCoefficients" auto="T" enabled="T">11</param>
+   <param id="multilayerIntegrationSteps" auto="T" enabled="T">50</param>
+   <param id="reflectivitySenkrecht" enabled="T">0.115539</param>
+   <param id="reflectivityParallel" enabled="T">0.115189</param>
+   <param id="reflectivityPhase" enabled="T">-0.160189</param>
+   <param id="reflectivityType" comment="Derived by Material" enabled="T">1</param>
+   <param id="materialSubstrate" enabled="T">Si</param>
+   <param id="roughnessSubstrate" enabled="T">0.2</param>
+   <param id="densitySubstrate" auto="T" enabled="T">2.32</param>
+   <param id="surfaceCoating" comment="One coating" enabled="T">1</param>
    <param id="numberLayer" enabled="F">2</param>
-   <param id="materialCoating1" enabled="F">Au</param>
-   <param id="thicknessCoating1" enabled="F">30</param>
-   <param id="densityCoating1" auto="T" enabled="F">19.3</param>
+   <param id="materialCoating1" enabled="T">Au</param>
+   <param id="thicknessCoating1" enabled="T">30</param>
+   <param id="densityCoating1" auto="T" enabled="T">19.3</param>
    <param id="materialCoating2" enabled="F"></param>
    <param id="thicknessCoating2" enabled="F">0</param>
    <param id="densityCoating2" auto="T" enabled="F">0</param>
@@ -381,7 +381,7 @@
   <object name="ExitSlit" type="Slit">
    <param id="openingShape" comment="rectangle" enabled="T">0</param>
    <param id="openingWidth" enabled="T">40</param>
-   <param id="openingHeight" enabled="T">0.1</param>
+   <param id="openingHeight" enabled="T">0.03</param>
    <param id="centralBeamstop" comment="none" enabled="T">0</param>
    <param id="stopWidth" enabled="F">20</param>
    <param id="stopHeight" enabled="F">1</param>
