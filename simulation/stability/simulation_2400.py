@@ -21,7 +21,8 @@ params = [
              beamline.PG.cFactor:2.823}, 
             {beamline.PG.orderDiffraction:order},
             {beamline.CPMU20.numberRays:nrays},
-            {beamline.M1.translationXerror:[0.1, 0.2]}
+            {beamline.M1.translationXerror:[0.1, 0.2],
+            beamline.M1.translationYerror:[0.1, 0.2]},
 
         ]
 
