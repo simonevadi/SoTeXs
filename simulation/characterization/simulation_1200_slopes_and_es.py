@@ -8,7 +8,7 @@ from params import hb_1200_cff as cff
 from params import ncpu
 from slopes_helper import make_slopes_params
 
-sim = Simulate('rml/sotexs_1200_07.rml', hide=True)
+sim = Simulate('rml/sotexs_1200_Pt.rml', hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
