@@ -1,16 +1,19 @@
 #!/bin/bash
 
-sudo -v            # Ask for sudo password upfront
 
 
 
-python simulation_1200_07.py
+# python simulation_1200_Pt.py
+# git add .
+# git commit -m "simulation_1200_Pt"
+# git push origin main
+
+python simulation_1200_triple_coating.py
 git add .
-git commit -m "simulation_1200"
+git commit -m "simulation_1200_triple"
 git push origin main
 
-
-python simulation_2400_ML_07.py
+python simulation_2400.py
 git add .
 git commit -m "simulation_2400"
 git push origin main

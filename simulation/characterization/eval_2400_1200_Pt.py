@@ -17,14 +17,14 @@ from raypyng.postprocessing import PostProcessAnalyzed
 p = PostProcessAnalyzed()
 
 # 1200 l/mm grating
-flux_simulation_folder07 = 'RAYPy_Simulation_1200_07' 
+flux_simulation_folder07 = 'RAYPy_Simulation_1200_Pt' 
 
 oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 flux07_1200 = pd.read_csv(os.path.join(flux_simulation_folder07, oe))
 flux07_1200 = flux07_1200[flux07_1200['CPMU20.photonEnergy'] < 2200]
 
 # 2400 l/mm grating
-flux_simulation_folder07 = 'RAYPy_Simulation_2400_07' 
+flux_simulation_folder07 = 'RAYPy_Simulation_2400' 
 
 oe = 'DetectorAtFocus' + '_RawRaysOutgoing.csv'
 flux07 = pd.read_csv(os.path.join(flux_simulation_folder07, oe))
@@ -45,42 +45,34 @@ ax2=axs[0,0]
 de = 38.9579-30.0000
 table = 'Henke'
 energy_coating = np.arange(500, 5001, de)
-
-# 0.7 degrees
 theta = 0.7
+
 Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
 Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
 B4C = rm.Material('C', rho=2.52,  kind='mirror',  table=table)
+Pt  = rm.Material('Pt', rho=21.45, kind='mirror', table=table)
 IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40, 
                         bLayer=Cr, bThickness=60, 
                         nPairs=1, substrate=Ir)
 IrCrB4C, _ = get_reflectivity(IrCrB4C, E=energy_coating, theta=theta)
+Pt, _ = get_reflectivity(Pt, E=energy_coating, theta=theta)
+
 ax2.plot(energy_coating, IrCrB4C, label=f'IrCrB4C at {theta}°')
-
-
-# Save data to a CSV file
-output_file = "coating_IrCrB4C_08.csv"
-np.savetxt(output_file, np.column_stack((energy_coating, IrCrB4C)),
-           delimiter=",", header="Energy[eV],Reflectivity", comments='')
-
-
-# 0.8 degrees
-theta = 0.8
-Ir  = rm.Material('Ir',  rho=22.56, kind='mirror',table=table)
-Cr  = rm.Material('Cr',  rho=7.15,  kind='mirror',table=table)
-B4C = rm.Material('C', rho=2.52,  kind='mirror',  table=table)
-IrCrB4C = rm.Multilayer( tLayer=B4C, tThickness=40, 
-                        bLayer=Cr, bThickness=60, 
-                        nPairs=1, substrate=Ir)
-IrCrB4C, _ = get_reflectivity(IrCrB4C, E=energy_coating, theta=theta)
-ax2.plot(energy_coating, IrCrB4C, linestyle='dashed', label=f'IrCrB4C at {theta}°')
-
-
+ax2.plot(energy_coating, Pt, label=f'Pt at {theta}°')
 
 ax2.set_xlabel('Energy [eV]')
 ax2.set_ylabel('Reflectivity [a.u.]')
 ax2.set_title(f'Mirror Coating Reflectivity ')
 ax2.legend()
+
+# Save data to a CSV file
+output_file = "coating_IrCrB4C_07.csv"
+np.savetxt(output_file, np.column_stack((energy_coating, IrCrB4C)),
+           delimiter=",", header="Energy[eV],Reflectivity", comments='')
+output_file = "coating_Pt_07.csv"
+np.savetxt(output_file, np.column_stack((energy_coating, Pt)),
+           delimiter=",", header="Energy[eV],Reflectivity", comments='')
+
 
 
 # Undulator Flux
@@ -250,7 +242,7 @@ ax.set_ylim(6, 14)
 
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-plt.savefig('plot/SoTeXS.png')
+plt.savefig('plot/SoTeXS_1200Pt_2400.png')
 plt.close()
 
 # plotting efficiencies only 2400
@@ -281,7 +273,7 @@ ax.grid(which='both', axis='both')
 ax.legend()
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-plt.savefig('plot/SoTeXS_multilayer_efficiency.png')
+plt.savefig('plot/SoTeXS_1200Pt_2400_multilayer_efficiency.png')
 
 
 # Flux Density
@@ -314,4 +306,4 @@ ax.legend()
 
 plt.suptitle('SoTeXS, ES=30 µm')
 plt.tight_layout()
-plt.savefig('plot/SoTeXS_flux_density.png')
+plt.savefig('plot/SoTeXS_1200Pt_2400_flux_density.png')
