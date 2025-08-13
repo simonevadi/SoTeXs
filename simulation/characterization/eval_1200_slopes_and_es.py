@@ -86,8 +86,8 @@ for es in exit_slit:
         # No Slopes Errors
         filtered_sim = filter_df(sim, cols=list(el_dict.keys()))
         extract_and_plot(filtered_sim, axs, label='No Slopes Errors')
-
-        for slope in slopes:
+        print(slopes[:-1])
+        for slope in slopes[:-1]:
             filtered_sim = filter_df(sim, 
                                     cols=list(el_dict.keys()), 
                                     col_to_set=element, 
