@@ -122,7 +122,7 @@ ax.grid(which='both', axis='both')
 ax2.set_ylabel('Flux [ph/s/0.3A/tbw]')
 ax.set_xlim(xlim[0], xlim[1])
 
-# ax2.set_yscale('log')
+ax2.set_yscale('log')
 # ax2.set_ylim(10e9, 10e13)
 
 
