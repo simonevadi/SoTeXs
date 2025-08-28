@@ -17,8 +17,11 @@ exit_slit = np.loadtxt(os.path.join(flux_simulation_folder07, 'input_param_ExitS
 # create eval folder
 os.makedirs('plot/roughness', exist_ok=True)
 
-# All Zeros but one
+# make sure exit slit is a list
+exit_slit = exit_slit.tolist()
 
+if type(exit_slit) is float:
+    exit_slit = [exit_slit]
 
 for es in exit_slit:
     el_dict = {

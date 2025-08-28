@@ -14,8 +14,8 @@ rml=sim.rml
 beamline = sim.rml.beamline
 
 energy = np.arange(500, 2000.1, 250)    
-rounds = 50
-nrays  = 4e5
+rounds = 100
+nrays  = 5e5
 
 slopes = {
     beamline.M1.roughnessCoating1:  (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
