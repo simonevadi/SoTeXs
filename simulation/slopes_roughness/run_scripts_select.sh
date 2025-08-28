@@ -22,10 +22,10 @@ git add .
 git commit -m "simulation_1200_roughness_and_es_cff5"
 git push 
 
-python simulation_1200_slopes_and_es_cff5.py
-git add .
-git commit -m "simulation_1200_slopes_and_es_cff5"
-git push 
+# python simulation_1200_slopes_and_es_cff5.py
+# git add .
+# git commit -m "simulation_1200_slopes_and_es_cff5"
+# git push 
 
 python simulation_1200_slopes_and_es_cff10.py
 git add .
