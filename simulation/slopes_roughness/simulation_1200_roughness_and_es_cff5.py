@@ -18,17 +18,17 @@ rounds = 10
 nrays  = 4e5
 
 slopes = {
-    beamline.M1.roughnessCoating1:  (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
-    beamline.PremirrorM2.roughnessCoating1: (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
-    beamline.PG.roughnessSubstrate: (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
-    beamline.M3.roughnessCoating1: (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
-    beamline.KB_ver.roughnessCoating1: (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
-    beamline.KB_hor.roughnessCoating1: (np.array([0.1, 0.2, 0.3, 0.4, 0.5]), 0.3),
+    beamline.M1.roughnessCoating1:  (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
+    beamline.PremirrorM2.roughnessCoating1: (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
+    beamline.PG.roughnessSubstrate: (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
+    beamline.M3.roughnessCoating1: (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
+    beamline.KB_ver.roughnessCoating1: (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
+    beamline.KB_hor.roughnessCoating1: (np.array([0.1, 0.3, 0.5, 1.5]), 0.3),
 }
 slopes_dict = make_slopes_params(slopes)
 # define a list of dictionaries with the parameters to scan
 params = [  
-            {beamline.ExitSlit.openingHeight:[0.03,0.02,0.01]},
+            {beamline.ExitSlit.openingHeight:[0.01]},
             {beamline.CPMU20.photonEnergy:energy},
             {beamline.PG.cFactor:5}, 
             {beamline.PG.orderDiffraction:order},
