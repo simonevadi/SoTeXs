@@ -14,7 +14,7 @@ rml=sim.rml
 beamline = sim.rml.beamline
 
 energy = np.arange(500, 2000.1, 250)    
-rounds = 10
+rounds = 50
 nrays  = 4e5
 
 slopes = {
