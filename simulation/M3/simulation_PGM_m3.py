@@ -1,9 +1,10 @@
 from raypyng import Simulate
 
-from parameter import sotexs_file_path as rml_file
-from parameter import sotexs_file_name as sim_name
-from parameter import undulator
-from parameter import energy, rounds, ncpu, m3_radius
+from params import sotexs_1200_file_path as rml_file
+from params import sotexs_1200_file_name as sim_name
+from params import undulator_spectra as undulator
+from params import nrays
+from params import energy, rounds, ncpu, m3_radius
 
 
 sim = Simulate(rml_file, hide=True)
@@ -13,9 +14,9 @@ beamline = sim.rml.beamline
 
 # define a list of dictionaries with the parameters to scan
 params = [  
-            {beamline.SU.photonEnergy:energy},
-            {beamline.SU.energySpread:0},
-            {beamline.SU.numberRays:nrays},
+            {beamline.CPMU20.photonEnergy:energy},
+            {beamline.CPMU20.energySpread:0},
+            {beamline.CPMU20.numberRays:nrays},
             {beamline.M3.radius: m3_radius}
         ]
 
@@ -36,7 +37,7 @@ sim.reflectivity(False)
 sim.undulator_table=undulator
 
 ## This must be a list of dictionaries
-sim.exports  =  [{beamline.ExitSlit:['RawRaysIncoming']}]
+sim.exports  =  [{beamline.ExitSlit:['RawRaysIncoming', 'RawRaysOutgoing']}]
 
 
 #uncomment to run the simulations

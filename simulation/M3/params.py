@@ -2,10 +2,10 @@ import numpy as np
 import os
 import pandas as pd
 from pathlib import Path
-rounds = 10
+rounds = 1
 ncpu        = 30
 nrays       = 5e5
-m3_radius = np.arange(220, 240, .1)
+m3_radius = np.arange(220, 240, 1)
 
 energy = 1000
 
@@ -19,6 +19,8 @@ sotexs_1200_file_path  = os.path.join(Path(__file__).resolve().parents[2],
 # params only for evaluation
 beamline_name = 'SoTeXS'
 # define undulator file
-undulator_file_path = os.path.join('undulator', 'CPMU20_B2l_k_dep_simp_all_harm_300mA.dbr')
+undulator_file_path  = os.path.join(Path(__file__).resolve().parents[2],
+                                     'undulator',
+                                     'CPMU20.csv')
 # Undulator SPECTRA
-undulator_spectra = np.loadtxt(undulator_file_path, skiprows=8)
+undulator_spectra = pd.read_csv(undulator_file_path)

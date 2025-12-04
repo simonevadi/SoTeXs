@@ -5,14 +5,15 @@ import pandas as pd
 
 from raypyng.postprocessing import PostProcessAnalyzed
 
-from parameter import energy
+from params import energy
+
 p = PostProcessAnalyzed()
 mov_av = p.moving_average
 ##############################################################
 # LOAD IN DATA
 
 # Read CSV-File of the Beamline Simulation
-BL_file_path = os.path.join('RAYPy_Simulation_STXM_1200_PGM_M3', 'ExitSlit_RawRaysIncoming.csv')
+BL_file_path = os.path.join('RAYPy_Simulation_sotexs_1200_Pt', 'ExitSlit_RawRaysIncoming.csv')
 BL_df = pd.read_csv(BL_file_path)
 
 ##############################################################
@@ -44,5 +45,5 @@ if not os.path.exists(plot_folder):
 
 # Save the the figure
 plt.tight_layout()
-plt.savefig('plot/STXM_PGM_M3_radius.png')
+plt.savefig('plot/sotexs_M3_radius.png')
 # plt.show()
