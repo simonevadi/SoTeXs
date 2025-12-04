@@ -378,6 +378,29 @@
    <param id="cylindricalBowingAmp" enabled="F">0</param>
    <param id="cylindricalBowingRadius" enabled="F">0</param>
   </object>
+  <object name="DetectorAtExitSlit" type="ImagePlane">
+   <param id="distanceImagePlane" enabled="T">9500</param>
+   <param id="worldPosition" enabled="F">
+    <x>-666.8598917259096197</x>
+    <y>29.9999996799808706</y>
+    <z>29786.1806699504522840</z>
+   </param>
+   <param id="worldXdirection" enabled="F">
+    <x>0.9988061373414341</x>
+    <y>-0.0000000000000000</y>
+    <z>0.0488497697956133</z>
+   </param>
+   <param id="worldYdirection" enabled="F">
+    <x>-0.0000000000000000</x>
+    <y>1.0000000000000000</y>
+    <z>0.0000000000000002</z>
+   </param>
+   <param id="worldZdirection" enabled="F">
+    <x>-0.0488497697956133</x>
+    <y>-0.0000000000000002</y>
+    <z>0.9988061373414341</z>
+   </param>
+  </object>
   <object name="ExitSlit" type="Slit">
    <param id="openingShape" comment="rectangle" enabled="T">0</param>
    <param id="openingWidth" enabled="T">40</param>
