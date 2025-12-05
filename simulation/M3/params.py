@@ -34,3 +34,9 @@ m3_radius_cff = np.arange(230, 234, 0.5)
 # params only for evaluation
 beamline_name = 'SoTeXS'
 
+# varying cff M1 parallel
+sotexs_1200_m1par_sim_name = 'sotexs_1200_Pt_M3_m1par'
+sotexs_1200_m1par_file_name  = 'sotexs_1200_Pt_m3_m1_par'
+sotexs_1200_m1par_file_path  = os.path.join(Path(__file__).resolve().parents[2],
+                                     'rml',
+                                     sotexs_1200_m1par_file_name+'.rml')
