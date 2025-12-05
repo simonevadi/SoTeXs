@@ -13,7 +13,7 @@ mov_av = p.moving_average
 # LOAD IN DATA
 
 # Read CSV-File of the Beamline Simulation
-BL_file_path = os.path.join('RAYPy_Simulation_sotexs_1200_Pt', 'ExitSlit_RawRaysIncoming.csv')
+BL_file_path = os.path.join('RAYPy_Simulation_sotexs_1200_Pt_m3', 'DetectorAtExitSlit_RawRaysOutgoing.csv')
 BL_df = pd.read_csv(BL_file_path)
 
 ##############################################################

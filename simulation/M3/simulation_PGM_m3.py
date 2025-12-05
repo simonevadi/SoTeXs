@@ -37,8 +37,9 @@ sim.reflectivity(False)
 sim.undulator_table=undulator
 
 ## This must be a list of dictionaries
-sim.exports  =  [{beamline.ExitSlit:['RawRaysIncoming', 'RawRaysOutgoing']}]
-
+# sim.exports  =  [{beamline.DetectorAtExitSlit:['RawRaysOutgoing']}]
+sim.exports  =  [{beamline.ExitSlit:['RawRaysIncoming']}]
 
 #uncomment to run the simulations
-sim.run(multiprocessing=ncpu, force=False, remove_rawrays=True, remove_round_folders=True)
+# sim.run(multiprocessing=ncpu, force=False, remove_rawrays=True, remove_round_folders=True)
+sim.run(multiprocessing=5, force=False, remove_rawrays=True, remove_round_folders=True)
