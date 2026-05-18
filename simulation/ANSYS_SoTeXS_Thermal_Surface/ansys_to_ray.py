@@ -4,7 +4,7 @@ from postprocess_optics import (
     build_regular_grid,
     plot_outputs,
     write_ray_profile,
-    extract_centerline,
+    extract_centerlines,
     plot_combined_centerlines,
     prepare_git_safe_export_grid,
 )
@@ -24,6 +24,8 @@ FILES = [
     'Flux_Face_UY_003.txt',
     'Flux_Face_UY_004.txt',
 ]
+# Set to None for automatic y-limits.
+SAGITTAL_YMIN = -50
 
 PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 RAY_OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -52,14 +54,14 @@ for idx, name in enumerate(iter_files, start=1):
     print(f'[{idx}/{total_files}] Resampling for git-safe export and plotting...')
     x_exp, z_exp, h_exp = prepare_git_safe_export_grid(x_vals, z_vals, H_nm)
     plot_outputs(stem, x_exp, z_exp, h_exp, PLOTS_DIR)
-    zc, hc, xc = extract_centerline(x_exp, z_exp, h_exp)
-    centerlines.append((stem, zc, hc, xc))
+    mer_z, mer_vals, mer_x, sag_x, sag_vals, sag_z = extract_centerlines(x_exp, z_exp, h_exp)
+    centerlines.append((stem, mer_z, mer_vals, mer_x, sag_x, sag_vals, sag_z))
     print(f'[{idx}/{total_files}] Writing Ray profile...')
     write_ray_profile(stem, x_exp, z_exp, h_exp, RAY_OUT_DIR)
     print(f'[{idx}/{total_files}] Done: {name}')
 
 print('Generating combined centerline comparison...')
-plot_combined_centerlines(centerlines, PLOTS_DIR)
+plot_combined_centerlines(centerlines, PLOTS_DIR, sagittal_ymin=SAGITTAL_YMIN)
 
 print('Completed processing:', ', '.join(FILES))
 print('Plots:', PLOTS_DIR)

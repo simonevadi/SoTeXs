@@ -45,7 +45,7 @@ sim.raypyng_analysis = True # let RAY-UI analyze the results
 ## This must be a list of dictionaries
 sim.exports  =  [{beamline.DetectorAtFocus:['RawRaysOutgoing']}]
 
-undulator_table = pd.read_csv('undulator/CPMU20.csv')
+undulator_table = pd.read_csv(Path(__file__).resolve().parents[2] / 'undulator' / 'CPMU20.csv')
 sim.undulator_table = undulator_table
 
 sim.efficiency = efficiency

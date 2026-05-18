@@ -1,22 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-SCRIPTS=(
-  "simulation_nodef.py"
-  "simulation_profile001.py"
-  "simulation_profile002.py"
-  "simulation_profile003.py"
-  "simulation_profile004.py"
-)
-
 cd "$(dirname "$0")"
 
-for script in "${SCRIPTS[@]}"; do
-  echo "[START] ${script}"
-  python "${script}"
-  echo "[DONE]  ${script}"
-  echo
-  
-done
+echo "[START] simulation_2400_all.py"
+python simulation_2400_all.py
+python eval_2400_fwhm_bandwidth_vs_energy.py
+echo "[DONE]  simulation_2400_all.py"
 
-echo "All simulations completed successfully."
+echo "[START] simulation_1200_all.py"
+python simulation_1200_all.py
+python eval_1200_fwhm_bandwidth_vs_energy.py
+echo "[DONE]  simulation_1200_all.py"
+
+echo "All simulation batches completed successfully."

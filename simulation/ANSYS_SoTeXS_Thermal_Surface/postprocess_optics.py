@@ -175,22 +175,39 @@ def plot_outputs(stem: str, x_vals, z_vals, H_nm, plots_dir: Path):
         f'({X3.shape[0]}x{X3.shape[1]} mesh) in {time.perf_counter() - t1:.1f}s'
     )
 
-def extract_centerline(x_vals, z_vals, H_nm):
+def extract_centerlines(x_vals, z_vals, H_nm):
     center_ix = len(x_vals) // 2
-    return z_vals, H_nm[center_ix, :], x_vals[center_ix]
+    center_iz = len(z_vals) // 2
+    mer_z = z_vals
+    mer_vals = H_nm[center_ix, :]
+    mer_x = x_vals[center_ix]
+    sag_x = x_vals
+    sag_vals = H_nm[:, center_iz]
+    sag_z = z_vals[center_iz]
+    return mer_z, mer_vals, mer_x, sag_x, sag_vals, sag_z
 
 
-def plot_combined_centerlines(centerlines, plots_dir: Path):
-    fig = plt.figure(figsize=(10, 5))
-    ax = fig.add_subplot(111)
-    for stem, z_vals, center_vals, center_x in centerlines:
-        ax.plot(z_vals, center_vals, lw=1.5, label=f'{stem} (x={center_x:.6g} mm)')
+def plot_combined_centerlines(centerlines, plots_dir: Path, sagittal_ymin=None):
+    fig, axs = plt.subplots(2, 1, figsize=(10, 9), sharex=False, sharey=False)
 
-    ax.set_xlabel('Z [mm]')
-    ax.set_ylabel('UY [nm]')
-    ax.set_title('Centerline Comparison')
-    ax.grid(True, alpha=0.3)
-    ax.legend(fontsize=8)
+    for stem, mer_z, mer_vals, mer_x, sag_x, sag_vals, sag_z in centerlines:
+        axs[0].plot(mer_z, mer_vals, lw=1.5, label=f'{stem} (x={mer_x:.6g} mm)')
+        axs[1].plot(sag_x, sag_vals, lw=1.5, label=f'{stem} (z={sag_z:.6g} mm)')
+
+    axs[0].set_xlabel('Z [mm]')
+    axs[0].set_ylabel('UY [nm]')
+    axs[0].set_title('Meridional Centerline Comparison')
+    axs[0].grid(True, alpha=0.3)
+    axs[0].legend(fontsize=8)
+
+    axs[1].set_xlabel('X [mm]')
+    axs[1].set_ylabel('UY [nm]')
+    axs[1].set_title('Sagittal Centerline Comparison')
+    axs[1].grid(True, alpha=0.3)
+    if sagittal_ymin is not None:
+        axs[1].set_ylim(bottom=sagittal_ymin)
+    axs[1].legend(fontsize=8)
+
     fig.tight_layout()
     fig.savefig(plots_dir / 'centerline_comparison.png', dpi=180)
     plt.close(fig)

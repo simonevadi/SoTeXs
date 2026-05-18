@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import pandas as pd
+from pathlib import Path
 
 rounds_1200 = 1
 rounds_ml   = 1
@@ -26,9 +27,9 @@ ml_nrays        = nrays
 
 # ml_rml_file_path   = os.path.join('rml/'+ml_rml_file_name+'.rml')
 
-grating = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat',
+grating = pd.read_csv(Path(__file__).resolve().parents[2] / 'ML_eff' / 'ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLbGR.dat',
                       sep='\s+')
-mirror = pd.read_csv('ML_eff/ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat',
+mirror = pd.read_csv(Path(__file__).resolve().parents[2] / 'ML_eff' / 'ELISA_GR2400_2ord_ML-Cr-C_N60_d4.8nm_MLPM-max.dat',
                       sep='\s+')
 
 ml_cff = grating['Cff'].to_numpy().flatten()#[::10]
@@ -60,6 +61,6 @@ else:
 # params only for evaluation
 beamline_name = 'SoTeXS'
 # define undulator file
-undulator_file_path = os.path.join('undulator', 'CPMU20_B2l_k_dep_simp_all_harm_300mA.dbr')
+undulator_file_path = Path(__file__).resolve().parents[2] / 'undulator' / 'CPMU20_B2l_k_dep_simp_all_harm_300mA.dbr'
 # Undulator SPECTRA
 undulator_spectra = np.loadtxt(undulator_file_path, skiprows=8)
