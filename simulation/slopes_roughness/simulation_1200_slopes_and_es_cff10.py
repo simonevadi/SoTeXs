@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 from raypyng import Simulate
 
 # define the values of the parameters to scan 
@@ -8,7 +9,7 @@ from params import hb_1200_cff as cff
 from params import ncpu
 from slopes_helper import make_slopes_params
 
-sim = Simulate('rml/sotexs_1200_Pt.rml', hide=True)
+sim = Simulate(str(Path(__file__).resolve().parents[2] / 'rml' / 'sotexs_1200_Pt.rml'), hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline

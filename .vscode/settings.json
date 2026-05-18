@@ -1,5 +1,18 @@
 {
     "peacock.color": "red",
+    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "conda-env:rp",
+    "terminal.integrated.defaultProfile.linux": "Conda rp",
+    "terminal.integrated.profiles.linux": {
+        "Conda rp": {
+            "path": "bash",
+            "args": [
+                "-l",
+                "-c",
+                "if [ -x \"$HOME/miniconda3/bin/conda\" ]; then eval \"$($HOME/miniconda3/bin/conda shell.bash hook)\"; elif [ -x \"$HOME/anaconda3/bin/conda\" ]; then eval \"$($HOME/anaconda3/bin/conda shell.bash hook)\"; elif [ -x \"$HOME/mambaforge/bin/conda\" ]; then eval \"$($HOME/mambaforge/bin/conda shell.bash hook)\"; elif command -v conda >/dev/null 2>&1; then eval \"$(conda shell.bash hook)\"; fi; conda activate rp; exec bash -i"
+            ]
+        }
+    },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ff3333",
         "activityBar.background": "#ff3333",

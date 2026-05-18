@@ -176,3 +176,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# Generated Ray profiles (can be regenerated)
+simulation/ANSYS_SoTeXS_Thermal_Surface/ANSYS_data/Ray_UI_Import/generated/*.dat
+simulation/ANSYS_SoTeXS_Thermal_Surface/results/ray_ui_import/*.dat

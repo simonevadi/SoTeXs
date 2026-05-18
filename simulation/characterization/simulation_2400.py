@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 from raypyng import Simulate
 
@@ -10,7 +11,7 @@ from params import ncpu
 from params import ml_cff as cff
 from params import efficiency
 
-sim = Simulate('rml/sotexs_2400.rml', hide=True)
+sim = Simulate(str(Path(__file__).resolve().parents[2] / 'rml' / 'sotexs_2400.rml'), hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline

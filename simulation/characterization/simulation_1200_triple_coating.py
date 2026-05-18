@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 from raypyng import Simulate
 
@@ -9,7 +10,7 @@ from params import hb_1200_cff as cff
 from params import nrays, rounds_1200 as rounds
 from params import ncpu
 
-sim = Simulate('rml/sotexs_1200_triple_coating.rml', hide=True)
+sim = Simulate(str(Path(__file__).resolve().parents[2] / 'rml' / 'sotexs_1200_triple_coating.rml'), hide=True)
 
 rml=sim.rml
 beamline = sim.rml.beamline
