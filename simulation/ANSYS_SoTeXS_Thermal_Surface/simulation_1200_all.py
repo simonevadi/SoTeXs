@@ -37,10 +37,13 @@ for label, rml_name in SIMULATION_RMLS:
     sim.repeat = rounds
     sim.analyze = False
     sim.raypyng_analysis = True
+    sim.reflectivity = False
+
     sim.undulator_table = pd.read_csv(UNDULATOR_PATH)
     sim.exports = [
         {beamline.M1_hor_foc: ['RawRaysOutgoing']},
         {beamline.ExitSlit: ['RawRaysOutgoing', 'RawRaysIncoming']},
+        {beamline.DetectorAtFocus: ['RawRaysOutgoing']},
     ]
 
     sim.run(

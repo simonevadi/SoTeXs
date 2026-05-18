@@ -10,6 +10,7 @@ cases = [
     ('2400_profile003', 'RAYPy_Simulation_ansys_2400_profile003'),
     ('2400_profile004', 'RAYPy_Simulation_ansys_2400_profile004'),
 ]
+
 fig, axs = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
 for label, folder in cases:
     m1_df = pd.read_csv(os.path.join(base_dir, folder, 'M1_hor_foc_RawRaysOutgoing.csv')).sort_values('CPMU20.photonEnergy')
@@ -24,5 +25,60 @@ axs[2].set_xlabel('Photon Energy [eV]'); axs[2].set_ylabel('ExitSlit Outgoing Ba
 plt.tight_layout()
 out_png = os.path.join(base_dir, 'results', 'plots', 'eval_2400_fwhm_bandwidth_vs_energy.png')
 plt.savefig(out_png, dpi=180)
-# plt.show()
 print('Saved figure:', out_png)
+
+fig2, ax2 = plt.subplots(figsize=(8, 6))
+case_colors = plt.cm.tab10.colors
+for i, (label, folder) in enumerate(cases):
+    det_file = os.path.join(base_dir, folder, 'DetectorAtFocus_RawRaysOutgoing.csv')
+    if not os.path.exists(det_file):
+        raise FileNotFoundError(f'Missing required file: {det_file}')
+    det_df = pd.read_csv(det_file)
+    avg_hc = det_df['HorizontalCenter'].mean()
+    avg_vc = det_df['VerticalCenter'].mean()
+    ax2.scatter(
+        avg_hc,
+        avg_vc,
+        color=case_colors[i % len(case_colors)],
+        s=90,
+        alpha=0.9,
+        edgecolors='none',
+        label=label,
+    )
+
+ax2.set_xlabel('HorizontalCenter [mm]')
+ax2.set_ylabel('VerticalCenter [mm]')
+ax2.set_title('2400: DetectorAtFocus center scatter (colored by energy)')
+ax2.grid(True, alpha=0.3)
+ax2.legend()
+fig2.tight_layout()
+out_png2 = os.path.join(base_dir, 'results', 'plots', 'eval_2400_detector_center_scatter.png')
+fig2.savefig(out_png2, dpi=180)
+print('Saved figure:', out_png2)
+
+
+fig3, axs3 = plt.subplots(2, 1, figsize=(9, 8), sharex=True)
+for i, (label, folder) in enumerate(cases):
+    det_file = os.path.join(base_dir, folder, 'DetectorAtFocus_RawRaysOutgoing.csv')
+    if not os.path.exists(det_file):
+        raise FileNotFoundError(f'Missing required file: {det_file}')
+    det_df = pd.read_csv(det_file).sort_values('CPMU20.photonEnergy')
+    color = case_colors[i % len(case_colors)]
+    axs3[0].plot(det_df['CPMU20.photonEnergy'], det_df['HorizontalFocusFWHM'], marker='o', color=color, label=label)
+    axs3[1].plot(det_df['CPMU20.photonEnergy'], det_df['VerticalFocusFWHM'], marker='o', color=color, label=label)
+
+axs3[0].set_ylabel('HorizontalFocusFWHM [mm]')
+axs3[0].set_title('2400: DetectorAtFocus Horizontal FWHM vs Energy')
+axs3[0].grid(True, alpha=0.3)
+axs3[0].legend()
+
+axs3[1].set_xlabel('Photon Energy [eV]')
+axs3[1].set_ylabel('VerticalFocusFWHM [mm]')
+axs3[1].set_title('2400: DetectorAtFocus Vertical FWHM vs Energy')
+axs3[1].grid(True, alpha=0.3)
+axs3[1].legend()
+
+fig3.tight_layout()
+out_png3 = os.path.join(base_dir, 'results', 'plots', 'eval_2400_detector_focus_fwhm_vs_energy.png')
+fig3.savefig(out_png3, dpi=180)
+print('Saved figure:', out_png3)
