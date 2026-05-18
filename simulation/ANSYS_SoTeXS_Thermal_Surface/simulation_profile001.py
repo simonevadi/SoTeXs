@@ -24,7 +24,7 @@ sim.params = [
 sim.simulation_name = f'{simulation_prefix}_profile001'
 sim.repeat = rounds
 sim.analyze = False
-sim.raypyng_analysis = False
+sim.raypyng_analysis = True
 sim.undulator_table = pd.read_csv(UNDULATOR_PATH)
 sim.exports = [
     {beamline.M1_hor_foc: ['RawRaysOutgoing']},
