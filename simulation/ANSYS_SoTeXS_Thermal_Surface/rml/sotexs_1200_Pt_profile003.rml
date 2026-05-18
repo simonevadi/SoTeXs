@@ -120,7 +120,7 @@
    </param>
    <param id="slopeError" comment="Yes" enabled="T">0</param>
    <param id="profileKind" comment="Profile-File" enabled="T">0</param>
-   <param id="profileFile" absolute="/home/simone/projects/beamlines/SoTeXS/simulation/ANSYS_SoTeXS_Thermal_Surface/results/ray_ui_import/Flux_Face_UY_001_ray_profile.dat" enabled="T">/home/simone/projects/beamlines/SoTeXS/simulation/ANSYS_SoTeXS_Thermal_Surface/results/ray_ui_import/Flux_Face_UY_001_ray_profile.dat</param>
+   <param id="profileFile" absolute="/home/simone/projects/beamlines/SoTeXS/simulation/ANSYS_SoTeXS_Thermal_Surface/results/ray_ui_import/Flux_Face_UY_003_ray_profile.dat" enabled="T">/home/simone/projects/beamlines/SoTeXS/simulation/ANSYS_SoTeXS_Thermal_Surface/results/ray_ui_import/Flux_Face_UY_003_ray_profile.dat</param>
    <param id="slopeErrorSag" enabled="F">1.5</param>
    <param id="slopeErrorMer" enabled="F">0.5</param>
    <param id="thermalDistortionAmp" enabled="F">0</param>
